@@ -13,15 +13,13 @@
 # Environment files
 .env
 .env.*
-!.env.example
 
 # Dependencies and build outputs
 node_modules/
 dist/
 build/
 
-# Docker / local runtime
-docker-data/
+# Local runtime
 tmp/
 
 # Local planning docs
