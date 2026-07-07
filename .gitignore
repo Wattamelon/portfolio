@@ -1,2 +1,28 @@
 *.pdf
 4-1_개념정리.md
+
+# OS files
+.DS_Store
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Dependencies and build outputs
+node_modules/
+dist/
+build/
+
+# Docker / local runtime
+docker-data/
+tmp/
+
+# Local planning docs
+phase/
