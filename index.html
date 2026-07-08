@@ -11,15 +11,27 @@
     <header class="site-header" id="top">
       <div class="container header-inner">
         <a class="brand" href="#top" aria-label="홈으로 이동">Moon's Portfolio</a>
-        <button
-          class="menu-button"
-          type="button"
-          aria-label="메뉴 열기"
-          data-menu-button
-        >
-          Menu
-        </button>
-        <nav class="site-nav" aria-label="주요 메뉴" data-nav>
+        <div class="header-controls">
+          <button
+            class="theme-button"
+            type="button"
+            aria-label="다크 모드로 전환"
+            data-theme-toggle
+          >
+            Theme
+          </button>
+          <button
+            class="menu-button"
+            type="button"
+            aria-label="메뉴 열기"
+            aria-expanded="false"
+            aria-controls="site-nav"
+            data-menu-button
+          >
+            Menu
+          </button>
+        </div>
+        <nav class="site-nav" id="site-nav" aria-label="주요 메뉴" data-nav>
           <a href="#hero">Home</a>
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
@@ -50,11 +62,11 @@
             </ul>
           </div>
           <aside class="hero-panel" aria-label="현재 진행 상태">
-            <p class="panel-title">Phase 02</p>
+            <p class="panel-title">Phase 03</p>
             <ul class="panel-list">
-              <li>반응형 레이아웃 적용</li>
-              <li>프로필 정보 실데이터 반영</li>
-              <li>다음 단계용 UI 기반 정리</li>
+              <li>메뉴와 스크롤 인터랙션 연결</li>
+              <li>테마 전환 상태 저장</li>
+              <li>사용자 행동에 반응하는 UI 준비</li>
             </ul>
             <div class="panel-meta">
               <span>학부연구생 6개월</span>
@@ -217,5 +229,14 @@
         </div>
       </div>
     </footer>
+
+    <button
+      class="scroll-top-button"
+      type="button"
+      aria-label="맨 위로 이동"
+      data-scroll-top
+    >
+      Top
+    </button>
   </body>
 </html>
