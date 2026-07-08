@@ -1,6 +1,6 @@
 document.documentElement.dataset.app = "portfolio";
 
-const APP_VERSION = "v0.5.2";
+const APP_VERSION = "v0.6.0";
 
 window.portfolioElements = {
   menuButton: document.querySelector("[data-menu-button]"),
@@ -90,9 +90,9 @@ const translations = {
       },
       panelLabel: "현재 진행 상태",
       phaseItems: {
-        validation: "Contact 폼 유효성 검사 추가",
-        feedback: "에러 메시지와 성공 메시지 UX 정리",
-        realtime: "입력 중 실시간 피드백 연결",
+        validation: "접근성과 키보드 사용성 점검",
+        feedback: "README와 배포 정보 정리",
+        realtime: "최종 UI와 인터랙션 마감",
       },
       meta: {
         research: "학부연구생 6개월",
@@ -225,9 +225,9 @@ const translations = {
       },
       panelLabel: "Current progress",
       phaseItems: {
-        validation: "Added contact form validation",
-        feedback: "Organized error and success message UX",
-        realtime: "Connected real-time input feedback",
+        validation: "Checked accessibility and keyboard usability",
+        feedback: "Organized README and deployment information",
+        realtime: "Polished the final UI and interactions",
       },
       meta: {
         research: "6 months as undergraduate researcher",
@@ -360,9 +360,9 @@ const translations = {
       },
       panelLabel: "現在の進捗",
       phaseItems: {
-        validation: "Contact フォームのバリデーションを追加",
-        feedback: "エラーと成功メッセージの UX を整理",
-        realtime: "入力中のリアルタイムフィードバックを接続",
+        validation: "アクセシビリティとキーボード操作を点検",
+        feedback: "README とデプロイ情報を整理",
+        realtime: "最終 UI とインタラクションを仕上げ",
       },
       meta: {
         research: "学部研究生 6か月",
@@ -602,6 +602,9 @@ function scrollToTarget(hash) {
   const target = document.querySelector(hash);
   if (!target) return;
   target.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (target instanceof HTMLElement) {
+    target.focus({ preventScroll: true });
+  }
 }
 
 function handleScrollState() {
@@ -678,6 +681,7 @@ function createProjectCard(repo) {
   link.target = "_blank";
   link.rel = "noreferrer";
   link.textContent = getTranslation("projects.link");
+  link.setAttribute("aria-label", `${repo.name} repository`);
 
   footer.append(meta, link);
   article.append(title, description, footer);

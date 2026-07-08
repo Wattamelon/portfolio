@@ -1,17 +1,41 @@
-# 4-1 Mission
+# Moon's Portfolio
 
-이 저장소는 웹 기초 과제를 단계적으로 완성하기 위한 작업 공간입니다.
+Codyssey 4-1 미션으로 만든 정적 포트폴리오 웹사이트입니다.  
+순수 `HTML`, `CSS`, `JavaScript`로 제작했고, GitHub API를 사용해 공개 저장소를 프로젝트 섹션에 불러옵니다.
 
-## 개발 환경
-- GitHub로 버전 관리
-- 순수 HTML, CSS, JavaScript 중심 개발
+## Live Demo
+- 배포 URL: `https://wattamelon.github.io/portfolio/`
+- 현재 반영 확인용 버전 배지: 화면 오른쪽 아래 `Build v0.6.0`
+
+## 주요 기능
+- 시맨틱 HTML 기반의 단일 페이지 포트폴리오
+- 반응형 레이아웃
+- 모바일 메뉴, 테마 전환, 상단 이동 버튼
+- GitHub API 기반 프로젝트 카드 렌더링
+- Contact 폼 유효성 검사
+- 한국어 / 영어 / 일본어 언어 전환
+- 키보드 접근성을 위한 skip link, focus-visible, 상태 메시지 보강
+
+## 사용 기술
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- GitHub Pages
+- GitHub REST API
 
 ## 실행 방법
 ```bash
-브라우저에서 index.html을 열거나, 로컬 정적 서버로 실행
+# 가장 간단한 방법
+index.html 파일을 브라우저에서 직접 열기
 ```
 
-## 기본 폴더 구조
+또는 정적 서버로 실행할 수 있습니다.
+
+```bash
+python3 -m http.server
+```
+
+## 프로젝트 구조
 ```txt
 /
   index.html
@@ -20,22 +44,23 @@
   js/
     main.js
   images/
+  README.md
 ```
 
-- `index.html`: 페이지 구조와 각 자원 연결
-- `css/`: 스타일 파일 보관
-- `js/`: 인터랙션과 기능 로직 보관
-- `images/`: 이미지와 아이콘 같은 정적 자원 보관
+- `index.html`: 전체 페이지 구조와 접근성 마크업
+- `css/style.css`: 레이아웃, 반응형 스타일, 상태 UI
+- `js/main.js`: 메뉴, 테마, 다국어, GitHub API, 폼 검증 로직
+- `images/`: 프로필 이미지 등 정적 자산
 
-## 작업 흐름
-1. `phase/00_environment_and_repo_setup.md`에 따라 환경을 먼저 정리한다.
-2. 이후 phase 문서를 순서대로 진행한다.
-3. 각 단계가 끝날 때마다 Git 커밋을 남긴다.
+## 접근성 및 배포 체크
+- `alt`, `label`, `aria-live`, `aria-label` 적용
+- 키보드 탭 이동과 skip link 지원
+- 잘못된 폼 입력 시 필드별 에러 메시지 제공
+- GitHub Pages 배포 경로를 고려한 상대 경로 사용
+- 정적 자원에 버전 쿼리를 붙여 캐시 문제를 줄임
 
-## 현재 범위
-이 프로젝트는 GitHub API를 사용하는 프론트엔드 포트폴리오 사이트이며,
-최종 결과물은 GitHub Pages로 배포되는 정적 웹사이트다.
+## 스크린샷
+- 최종 제출용 캡처는 배포 화면 기준으로 추가 예정
 
 ## 참고
-- `phase/00_phase_order.md`에서 전체 단계 순서를 확인할 수 있다.
-- `phase/00_environment_and_repo_setup.md`에서 0단계의 완료 기준을 확인할 수 있다.
+- phase 문서는 로컬 학습용 진행 문서로 관리합니다.

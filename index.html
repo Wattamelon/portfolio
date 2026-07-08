@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="app-version" content="v0.5.2" />
+    <meta name="app-version" content="v0.6.0" />
     <title>Moon's Portfolio</title>
-    <link rel="stylesheet" href="./css/style.css?v0.5.2" />
-    <script src="./js/main.js?v0.5.2" defer></script>
+    <link rel="stylesheet" href="./css/style.css?v0.6.0" />
+    <script src="./js/main.js?v0.6.0" defer></script>
   </head>
   <body>
-    <div class="build-badge" aria-label="현재 배포 버전">Build v0.5.2</div>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="build-badge" aria-label="현재 배포 버전">Build v0.6.0</div>
     <header class="site-header" id="top">
       <div class="container header-inner">
         <a
@@ -74,7 +75,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="main-content" tabindex="-1">
       <section class="hero section" id="hero" aria-labelledby="hero-title">
         <div class="container hero-grid">
           <div class="hero-copy">
@@ -95,11 +96,11 @@
             </ul>
           </div>
           <aside class="hero-panel" aria-label="현재 진행 상태" data-i18n-aria-label="hero.panelLabel">
-            <p class="panel-title">Phase 05</p>
+            <p class="panel-title">Phase 06</p>
             <ul class="panel-list">
-              <li data-i18n="hero.phaseItems.validation">Contact 폼 유효성 검사 추가</li>
-              <li data-i18n="hero.phaseItems.feedback">에러 메시지와 성공 메시지 UX 정리</li>
-              <li data-i18n="hero.phaseItems.realtime">입력 중 실시간 피드백 연결</li>
+              <li data-i18n="hero.phaseItems.validation">접근성과 키보드 사용성 점검</li>
+              <li data-i18n="hero.phaseItems.feedback">README와 배포 정보 정리</li>
+              <li data-i18n="hero.phaseItems.realtime">최종 UI와 인터랙션 마감</li>
             </ul>
             <div class="panel-meta">
               <span data-i18n="hero.meta.research">학부연구생 6개월</span>
@@ -284,7 +285,7 @@
       <div class="container footer-inner">
         <p data-i18n="footer.copyright">© 2026 Moon's Portfolio</p>
         <div class="footer-links">
-          <a href="https://github.com/Wattamelon">GitHub</a>
+          <a href="https://github.com/Wattamelon" target="_blank" rel="noreferrer">GitHub</a>
           <a href="#top" data-i18n="footer.backToTop">Back to Top</a>
         </div>
       </div>
