@@ -5,7 +5,7 @@ Codyssey 4-1 미션으로 만든 정적 포트폴리오 웹사이트입니다.
 
 ## Live Demo
 - 배포 URL: `https://wattamelon.github.io/portfolio/`
-- 현재 반영 확인용 버전 배지: 화면 오른쪽 아래 `Build v0.6.0`
+- 현재 반영 확인용 버전 배지: 화면 오른쪽 아래 `Build v0.6.3`
 
 ## 주요 기능
 - 시맨틱 HTML 기반의 단일 페이지 포트폴리오
@@ -13,7 +13,7 @@ Codyssey 4-1 미션으로 만든 정적 포트폴리오 웹사이트입니다.
 - 모바일 메뉴, 테마 전환, 상단 이동 버튼
 - GitHub API 기반 프로젝트 카드 렌더링
 - Contact 폼 유효성 검사
-- 한국어 / 영어 / 일본어 언어 전환
+- 영어 단일 포트폴리오 콘텐츠
 - 키보드 접근성을 위한 skip link, focus-visible, 상태 메시지 보강
 
 ## 사용 기술
@@ -49,7 +49,7 @@ python3 -m http.server
 
 - `index.html`: 전체 페이지 구조와 접근성 마크업
 - `css/style.css`: 레이아웃, 반응형 스타일, 상태 UI
-- `js/main.js`: 메뉴, 테마, 다국어, GitHub API, 폼 검증 로직
+- `js/main.js`: 메뉴, 테마, GitHub API, 폼 검증 로직
 - `images/`: 프로필 이미지 등 정적 자산
 
 ## 접근성 및 배포 체크

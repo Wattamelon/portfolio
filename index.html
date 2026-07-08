@@ -3,58 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="app-version" content="v0.6.1" />
+    <meta name="app-version" content="v0.6.3" />
     <title>Moon's Portfolio</title>
-    <link rel="stylesheet" href="./css/style.css?v0.6.1" />
-    <script src="./js/main.js?v0.6.1" defer></script>
+    <link rel="stylesheet" href="./css/style.css?v0.6.3" />
+    <script src="./js/main.js?v0.6.3" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="build-badge" aria-label="Current build version">Build v0.6.1</div>
+    <div class="build-badge" aria-label="Current build version">Build v0.6.3</div>
     <header class="site-header" id="top">
       <div class="container header-inner">
-        <a
-          class="brand"
-          href="#top"
-          aria-label="홈으로 이동"
-          data-i18n="brand.name"
-          data-i18n-aria-label="brand.ariaLabel"
-        >
-          Moon's Portfolio
-        </a>
+        <a class="brand" href="#top" aria-label="Go to home">Moon's Portfolio</a>
         <div class="header-controls">
-          <div
-            class="language-switcher"
-            role="group"
-            aria-label="언어 선택"
-            data-i18n-aria-label="language.switcherLabel"
-          >
-            <button class="language-button" type="button" data-language-button="ko">KO</button>
-            <button class="language-button" type="button" data-language-button="en">EN</button>
-            <button class="language-button" type="button" data-language-button="ja">JA</button>
-          </div>
           <button
             class="theme-button"
             type="button"
-            aria-label="다크 모드로 전환"
+            aria-label="Switch to dark mode"
             data-theme-toggle
-            data-i18n="theme.buttonLight"
-            data-i18n-light="theme.buttonLight"
-            data-i18n-dark="theme.buttonDark"
-            data-i18n-aria-light="theme.toDark"
-            data-i18n-aria-dark="theme.toLight"
           >
             Theme
           </button>
           <button
             class="menu-button"
             type="button"
-            aria-label="메뉴 열기"
+            aria-label="Open menu"
             aria-expanded="false"
             aria-controls="site-nav"
             data-menu-button
-            data-i18n="menu.button"
-            data-i18n-aria-label="menu.open"
           >
             Menu
           </button>
@@ -62,15 +37,14 @@
         <nav
           class="site-nav"
           id="site-nav"
-          aria-label="주요 메뉴"
+          aria-label="Main navigation"
           data-nav
-          data-i18n-aria-label="menu.navLabel"
         >
-          <a href="#hero" data-i18n="nav.home">Home</a>
-          <a href="#about" data-i18n="nav.about">About</a>
-          <a href="#skills" data-i18n="nav.skills">Skills</a>
-          <a href="#projects" data-i18n="nav.projects">Projects</a>
-          <a href="#contact" data-i18n="nav.contact">Contact</a>
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
         </nav>
       </div>
     </header>
@@ -79,81 +53,86 @@
       <section class="hero section" id="hero" aria-labelledby="hero-title">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow" data-i18n="hero.eyebrow">Web Core And Front-end</p>
-            <h1 id="hero-title" data-i18n="hero.title">문성온 | Front-end Portfolio</h1>
-            <p class="hero-text" data-i18n="hero.text">
-              프론트엔드와 웹 기본기에 집중하며, 실제 경험을 바탕으로 꾸준히 성장하고 있습니다.
-            </p>
+            <p class="eyebrow">Web Core And Front-end</p>
+            <h1 id="hero-title">Moon Seong-on | Front-end Portfolio</h1>
+            <p class="hero-text">Focused on front-end fundamentals and steady growth built on real experience.</p>
             <div class="hero-actions">
-              <a class="button-link" href="#projects" data-i18n="hero.primaryAction">View Projects</a>
-              <a class="button-link secondary" href="#contact" data-i18n="hero.secondaryAction">Contact</a>
+              <a class="button-link" href="#projects">View Projects</a>
+              <a class="button-link secondary" href="#contact">Contact</a>
             </div>
-            <ul class="hero-highlights" aria-label="핵심 요약" data-i18n-aria-label="hero.highlightsLabel">
-              <li data-i18n="hero.highlights.degree">컴퓨터공학부 소프트웨어공학과 학사</li>
-              <li data-i18n="hero.highlights.certificates">SQLD 보유 / OPIC AL</li>
-              <li data-i18n="hero.highlights.bootcamp">호주 워킹홀리데이 11개월</li>
+            <ul class="hero-highlights" aria-label="Key highlights">
+              <li>B.S. in Software Engineering</li>
+              <li>SQLD / OPIC AL</li>
+              <li>11 months working holiday in Australia</li>
             </ul>
           </div>
-          <aside class="hero-panel" aria-label="현재 진행 상태" data-i18n-aria-label="hero.panelLabel">
-            <p class="panel-title" data-i18n="hero.panelTitle">Profile</p>
+          <aside class="hero-panel" aria-label="Profile summary">
+            <p class="panel-title">Profile</p>
             <ul class="panel-list">
-              <li data-i18n="hero.phaseItems.validation">프론트엔드와 웹 기초 학습</li>
-              <li data-i18n="hero.phaseItems.feedback">실무형 프로젝트와 포트폴리오 정리</li>
-              <li data-i18n="hero.phaseItems.realtime">꾸준한 기록과 성장 중심</li>
+              <li>Studying front-end and web fundamentals</li>
+              <li>Building practical projects and portfolio work</li>
+              <li>Focused on consistency and growth</li>
             </ul>
             <div class="panel-meta">
-              <span data-i18n="hero.meta.research">학부연구생 6개월</span>
-              <span data-i18n="hero.meta.intern">현장실습 인턴 2개월</span>
-              <span data-i18n="hero.meta.australia">호주 워킹홀리데이 11개월</span>
+              <span>6 months as undergraduate researcher</span>
+              <span>2 months internship</span>
+              <span>11 months working holiday in Australia</span>
             </div>
           </aside>
         </div>
       </section>
 
       <section class="about section" id="about" aria-labelledby="about-title">
-        <div class="container about-grid">
-          <div class="profile-card">
-            <img
-              src="images/증명사진.JPG"
-              alt="문선곤 프로필 사진"
-              width="320"
-              height="320"
-              data-i18n-alt="about.photoAlt"
-            />
-            <div class="profile-badges">
-              <span>SQLD</span>
-              <span>OPIC AL</span>
-              <span data-i18n="about.badges.driver">1종 보통</span>
-              <span data-i18n="about.badges.jlpt">JLPT N3 준비</span>
-            </div>
-          </div>
-          <div class="section-copy">
-            <p class="eyebrow" data-i18n="about.eyebrow">About</p>
-            <h2 id="about-title" data-i18n="about.title">짧고 분명하게 정리한 프로필</h2>
-            <ul class="info-list">
-              <li data-i18n="about.info.education">학력: 한국공학대학교 컴퓨터공학부 소프트웨어공학과 학사, GPA 3.78 / 4.5</li>
-              <li data-i18n="about.info.experience">경험: 프로발 현장실습 인턴 2개월, 학부연구생 6개월</li>
-              <li data-i18n="about.info.record">기록: 학회 논문 투고 경험 1회, 졸업작품 프로젝트 경험</li>
-              <li data-i18n="about.info.strength">강점: 영어 커뮤니케이션(OPIC AL), 다양한 현장 경험, 꾸준한 학습력</li>
-              <li data-i18n="about.info.service">이력: 육군 만기 전역, 운전면허 1종 보통 보유</li>
-            </ul>
-            <div class="fact-grid" aria-label="핵심 이력 요약" data-i18n-aria-label="about.factLabel">
-              <article class="fact-card">
-                <h3 data-i18n="about.facts.educationTitle">Education</h3>
-                <p data-i18n="about.facts.educationText">컴퓨터공학 기반의 전공 학습과 졸업작품 경험</p>
-              </article>
-              <article class="fact-card">
-                <h3 data-i18n="about.facts.experienceTitle">Experience</h3>
-                <p data-i18n="about.facts.experienceText">인턴, 연구실, 근로장학생, 아르바이트 경험을 통한 실무 적응력</p>
-              </article>
-              <article class="fact-card">
-                <h3 data-i18n="about.facts.globalTitle">Global</h3>
-                <p data-i18n="about.facts.globalText">호주 워킹홀리데이 11개월과 미국 어학연수 경험</p>
-              </article>
-              <article class="fact-card">
-                <h3 data-i18n="about.facts.lifeTitle">Life</h3>
-                <p data-i18n="about.facts.lifeText">근로장학생과 아르바이트 경험을 통해 쌓은 책임감과 꾸준함</p>
-              </article>
+        <div class="container">
+          <div class="about-card">
+            <h2 id="about-title">About</h2>
+            <div class="about-profile">
+              <div class="profile-photo">
+                <img
+                  src="images/증명사진.JPG"
+                  alt="Profile photo of Moon Seong-on"
+                  width="320"
+                  height="320"
+                />
+              </div>
+              <div class="profile-details">
+                <ul class="profile-info-list" aria-label="Profile details">
+                  <li>
+                    <span class="profile-info-label">Name</span>
+                    <span>Moon Seong-on</span>
+                  </li>
+                  <li>
+                    <span class="profile-info-label">Education</span>
+                    <span>B.S. in Software Engineering, Tech University of Korea</span>
+                  </li>
+                  <li>
+                    <span class="profile-info-label">GPA</span>
+                    <span>3.78 / 4.5</span>
+                  </li>
+                  <li>
+                    <span class="profile-info-label">Experience</span>
+                    <span>Proval internship 2 months, undergraduate researcher 6 months</span>
+                  </li>
+                  <li>
+                    <span class="profile-info-label">Record</span>
+                    <span>Academic paper submission, graduation project</span>
+                  </li>
+                  <li>
+                    <span class="profile-info-label">Global</span>
+                    <span>OPIC AL, 11 months working holiday in Australia</span>
+                  </li>
+                  <li>
+                    <span class="profile-info-label">Background</span>
+                    <span>Completed military service, driver's license</span>
+                  </li>
+                </ul>
+                <div class="profile-badges" aria-label="Certifications and strengths">
+                  <span>SQLD</span>
+                  <span>OPIC AL</span>
+                  <span>Driver's License</span>
+                  <span>Preparing for JLPT N3</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -161,32 +140,32 @@
 
       <section class="skills section" id="skills" aria-labelledby="skills-title">
         <div class="container">
-          <p class="eyebrow" data-i18n="skills.eyebrow">Skills</p>
-          <h2 id="skills-title" data-i18n="skills.title">지금 포트폴리오에 담아갈 역량과 자산</h2>
-          <ul class="skill-list" aria-label="기술 스택 목록" data-i18n-aria-label="skills.listLabel">
+          <p class="eyebrow">Skills</p>
+          <h2 id="skills-title">The strengths and assets I am building into this portfolio</h2>
+          <ul class="skill-list" aria-label="Skill stack list">
             <li>
               <strong>Web Basics</strong>
-              <span data-i18n="skills.items.webBasics">HTML, CSS, JavaScript 기본기 정리</span>
+              <span>Reinforcing HTML, CSS, and JavaScript fundamentals</span>
             </li>
             <li>
               <strong>Responsive UI</strong>
-              <span data-i18n="skills.items.responsive">Flexbox, Grid, 모바일 우선 레이아웃</span>
+              <span>Flexbox, Grid, and mobile-first layout thinking</span>
             </li>
             <li>
               <strong>Data Handling</strong>
-              <span data-i18n="skills.items.data">GitHub API, 상태 UI, DOM 렌더링</span>
+              <span>GitHub API, state UI, and DOM rendering</span>
             </li>
             <li>
               <strong>SQLD</strong>
-              <span data-i18n="skills.items.sqld">데이터와 질의에 대한 기본 이해</span>
+              <span>Basic understanding of data and querying</span>
             </li>
             <li>
               <strong>Communication</strong>
-              <span data-i18n="skills.items.communication">OPIC AL, 해외 체류 경험 기반 소통 역량</span>
+              <span>Communication backed by OPIC AL and overseas experience</span>
             </li>
             <li>
               <strong>Consistency</strong>
-              <span data-i18n="skills.items.consistency">부트캠프와 다양한 현장 경험을 통한 꾸준함</span>
+              <span>Steady habits built through bootcamp and field experience</span>
             </li>
           </ul>
         </div>
@@ -196,16 +175,16 @@
         <div class="container">
           <div class="section-heading">
             <div>
-              <p class="eyebrow" data-i18n="projects.eyebrow">Projects</p>
-              <h2 id="projects-title" data-i18n="projects.title">Selected Projects</h2>
+              <p class="eyebrow">Projects</p>
+              <h2 id="projects-title">Selected Projects</h2>
             </div>
             <p class="status-chip" data-projects-status aria-live="polite">GitHub repositories ready to load</p>
           </div>
           <div class="project-grid" data-projects-grid>
             <article class="project-card">
-              <h3 data-i18n="projects.loadingTitle">Loading repositories...</h3>
-              <p data-i18n="projects.loadingBody">GitHub API에서 최신 저장소 목록을 가져오는 중입니다.</p>
-              <span class="project-link-placeholder" data-i18n="projects.loadingWait">Please wait</span>
+              <h3>Loading repositories...</h3>
+              <p>Fetching the latest repositories from the GitHub API.</p>
+              <span class="project-link-placeholder">Please wait</span>
             </article>
           </div>
         </div>
@@ -214,15 +193,13 @@
       <section class="contact section" id="contact" aria-labelledby="contact-title">
         <div class="container contact-grid">
           <div class="section-copy">
-            <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
-            <h2 id="contact-title" data-i18n="contact.title">Let&apos;s Connect</h2>
-            <p data-i18n="contact.text">
-              협업, 포지션, 프로젝트에 대한 연락을 남겨주세요.
-            </p>
+            <p class="eyebrow">Contact</p>
+            <h2 id="contact-title">Let&apos;s Connect</h2>
+            <p>Feel free to reach out about collaboration, roles, or projects.</p>
           </div>
           <form class="contact-form" data-contact-form novalidate>
             <div class="field">
-              <label for="name" data-i18n="contact.form.nameLabel">Name</label>
+              <label for="name">Name</label>
               <input
                 id="name"
                 name="name"
@@ -233,12 +210,11 @@
                 minlength="2"
                 aria-describedby="name-error"
                 data-validate-field="name"
-                data-i18n-placeholder="contact.form.namePlaceholder"
               />
               <p class="field-message" id="name-error" data-error-for="name" aria-live="polite"></p>
             </div>
             <div class="field">
-              <label for="email" data-i18n="contact.form.emailLabel">Email</label>
+              <label for="email">Email</label>
               <input
                 id="email"
                 name="email"
@@ -248,12 +224,11 @@
                 required
                 aria-describedby="email-error"
                 data-validate-field="email"
-                data-i18n-placeholder="contact.form.emailPlaceholder"
               />
               <p class="field-message" id="email-error" data-error-for="email" aria-live="polite"></p>
             </div>
             <div class="field">
-              <label for="message" data-i18n="contact.form.messageLabel">Message</label>
+              <label for="message">Message</label>
               <textarea
                 id="message"
                 name="message"
@@ -263,7 +238,6 @@
                 minlength="10"
                 aria-describedby="message-error"
                 data-validate-field="message"
-                data-i18n-placeholder="contact.form.messagePlaceholder"
               ></textarea>
               <p
                 class="field-message"
@@ -273,7 +247,7 @@
               ></p>
             </div>
             <p class="form-status" data-form-status aria-live="polite"></p>
-            <button class="submit-button" type="submit" data-i18n="contact.form.submit">Send Message</button>
+            <button class="submit-button" type="submit">Send Message</button>
           </form>
         </div>
       </section>
@@ -281,10 +255,10 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p data-i18n="footer.copyright">© 2026 Moon's Portfolio</p>
+        <p>© 2026 Moon's Portfolio</p>
         <div class="footer-links">
           <a href="https://github.com/Wattamelon" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="#top" data-i18n="footer.backToTop">Back to Top</a>
+          <a href="#top">Back to Top</a>
         </div>
       </div>
     </footer>
@@ -292,10 +266,8 @@
     <button
       class="scroll-top-button"
       type="button"
-      aria-label="맨 위로 이동"
+      aria-label="Back to top"
       data-scroll-top
-      data-i18n="footer.topButton"
-      data-i18n-aria-label="footer.topButtonAria"
     >
       Top
     </button>
