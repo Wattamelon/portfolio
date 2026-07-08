@@ -102,7 +102,7 @@ const translations = {
     },
     about: {
       photoAlt: "문성온 프로필 사진",
-      badges: { jlpt: "JLPT N3 준비" },
+      badges: { driver: "1종 보통", jlpt: "JLPT N3 준비" },
       eyebrow: "About",
       title: "기초를 다시 정확하게 다지며 성장 중인 개발자",
       text: "한국공학대학교 컴퓨터공학부 소프트웨어공학과를 졸업했고, 졸업작품 프로젝트와 학부연구생 경험을 거치며 소프트웨어를 끝까지 만들어보는 과정을 경험했습니다. 지금은 코디세이 부트캠프를 통해 HTML, CSS, JavaScript 기본기를 다시 정리하면서 실제로 배포 가능한 프론트엔드 포트폴리오를 만들고 있습니다.",
@@ -111,6 +111,7 @@ const translations = {
         experience: "경험: 프로발 현장실습 인턴 2개월, 학부연구생 6개월",
         record: "기록: 학회 논문 투고 경험 1회, 졸업작품 프로젝트 경험",
         strength: "강점: 영어 커뮤니케이션(OPIC AL), 다양한 현장 경험, 꾸준한 학습력",
+        service: "이력: 육군 만기 전역, 운전면허 1종 보통 보유",
       },
       factLabel: "핵심 이력 요약",
       facts: {
@@ -120,6 +121,8 @@ const translations = {
         experienceText: "인턴, 연구실, 근로장학생, 아르바이트 경험을 통한 실무 적응력",
         globalTitle: "Global",
         globalText: "호주 워킹홀리데이 11개월과 미국 어학연수 경험",
+        lifeTitle: "Life",
+        lifeText: "근로장학생과 아르바이트 경험을 통해 쌓은 책임감과 꾸준함",
       },
     },
     skills: {
@@ -237,7 +240,7 @@ const translations = {
     },
     about: {
       photoAlt: "Profile photo of Moon Seong-on",
-      badges: { jlpt: "Preparing for JLPT N3" },
+      badges: { driver: "Driver's License", jlpt: "Preparing for JLPT N3" },
       eyebrow: "About",
       title: "A developer growing by rebuilding the basics with precision",
       text: "I graduated in Software Engineering from Tech University of Korea, and I experienced end-to-end software development through a capstone project and undergraduate research. Now I am revisiting HTML, CSS, and JavaScript fundamentals through the Codyssey bootcamp while building a deployable front-end portfolio.",
@@ -246,6 +249,7 @@ const translations = {
         experience: "Experience: 2-month internship at Proval, 6 months as an undergraduate researcher",
         record: "Record: one academic paper submission and a graduation project",
         strength: "Strengths: English communication (OPIC AL), diverse field experience, steady learning habits",
+        service: "Background: completed military service and holds a standard driver's license",
       },
       factLabel: "Core background summary",
       facts: {
@@ -255,6 +259,8 @@ const translations = {
         experienceText: "Practical adaptability built through internships, lab work, student jobs, and part-time roles",
         globalTitle: "Global",
         globalText: "11 months of working holiday in Australia and language study experience in the U.S.",
+        lifeTitle: "Life",
+        lifeText: "Responsibility and consistency shaped through student work and part-time jobs",
       },
     },
     skills: {
@@ -372,7 +378,7 @@ const translations = {
     },
     about: {
       photoAlt: "ムン・ソンオンのプロフィール写真",
-      badges: { jlpt: "JLPT N3 準備中" },
+      badges: { driver: "普通免許", jlpt: "JLPT N3 準備中" },
       eyebrow: "About",
       title: "基礎を正確に積み直しながら成長している開発者",
       text: "韓国工学大学のソフトウェア工学科を卒業し、卒業制作プロジェクトと学部研究生の経験を通して、ソフトウェアを最後まで作り上げる過程を経験しました。現在は Codyssey ブートキャンプを通して HTML、CSS、JavaScript の基礎を整理しながら、実際に公開できるフロントエンドポートフォリオを作っています。",
@@ -381,6 +387,7 @@ const translations = {
         experience: "経験: Proval 現場実習インターン 2か月、学部研究生 6か月",
         record: "実績: 学会論文投稿 1回、卒業制作プロジェクト経験",
         strength: "強み: 英語でのコミュニケーション(OPIC AL)、多様な現場経験、継続的な学習習慣",
+        service: "経歴: 軍服務を満了し、普通免許を保有",
       },
       factLabel: "主要経歴の要約",
       facts: {
@@ -390,6 +397,8 @@ const translations = {
         experienceText: "インターン、研究室、学内アルバイトなどを通じた実務適応力",
         globalTitle: "Global",
         globalText: "オーストラリアでのワーキングホリデー 11か月と米国語学研修経験",
+        lifeTitle: "Life",
+        lifeText: "学内勤労とアルバイト経験を通じて培った責任感と継続力",
       },
     },
     skills: {

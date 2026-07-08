@@ -492,7 +492,7 @@ p {
 
 .fact-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
   margin-top: 24px;
 }
@@ -515,10 +515,11 @@ p {
 }
 
 .profile-card img {
-  width: 100%;
+  width: min(100%, 280px);
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 20px;
+  margin: 0 auto;
 }
 
 .profile-badges {
