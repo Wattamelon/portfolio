@@ -549,12 +549,16 @@ p {
   margin: 0;
   color: #c74646;
   font-size: 0.92rem;
+  font-weight: 600;
 }
 
 .form-status {
   min-height: 24px;
   margin: -4px 0 0;
   font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(199, 70, 70, 0.08);
 }
 
 .form-status.is-error {
@@ -563,6 +567,7 @@ p {
 
 .form-status.is-success {
   color: #2e8b57;
+  background: rgba(46, 139, 87, 0.1);
 }
 
 .submit-button {

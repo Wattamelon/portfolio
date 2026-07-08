@@ -231,6 +231,7 @@
                 required
                 minlength="2"
                 aria-describedby="name-error"
+                data-validate-field="name"
                 data-i18n-placeholder="contact.form.namePlaceholder"
               />
               <p class="field-message" id="name-error" data-error-for="name" aria-live="polite"></p>
@@ -245,6 +246,7 @@
                 autocomplete="email"
                 required
                 aria-describedby="email-error"
+                data-validate-field="email"
                 data-i18n-placeholder="contact.form.emailPlaceholder"
               />
               <p class="field-message" id="email-error" data-error-for="email" aria-live="polite"></p>
@@ -259,6 +261,7 @@
                 required
                 minlength="10"
                 aria-describedby="message-error"
+                data-validate-field="message"
                 data-i18n-placeholder="contact.form.messagePlaceholder"
               ></textarea>
               <p

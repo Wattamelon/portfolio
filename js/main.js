@@ -793,6 +793,16 @@ function setFieldError(fieldName, message = "") {
   }
 }
 
+function focusFirstInvalidField() {
+  const firstInvalidField = Object.values(window.portfolioElements.contactFields).find(
+    (field) => field?.classList.contains("is-invalid")
+  );
+
+  if (firstInvalidField) {
+    firstInvalidField.focus();
+  }
+}
+
 function validateName() {
   const field = window.portfolioElements.contactFields.name;
   if (!field) return true;
@@ -864,6 +874,7 @@ function handleContactSubmit(event) {
 
   if (!isValid) {
     setFormStatus(getTranslation("contact.validation.submitError"), "error");
+    focusFirstInvalidField();
     return;
   }
 
@@ -881,6 +892,15 @@ function handleFieldFeedback(event) {
   if (window.portfolioElements.formStatus?.classList.contains("is-error")) {
     setFormStatus("");
   }
+}
+
+function handleInvalidField(event) {
+  event.preventDefault();
+  const fieldName = event.target.dataset.validateField;
+  if (fieldName === "name") validateName();
+  if (fieldName === "email") validateEmail();
+  if (fieldName === "message") validateMessage();
+  setFormStatus(getTranslation("contact.validation.submitError"), "error");
 }
 
 if (menuButton) {
@@ -923,6 +943,7 @@ Object.values(window.portfolioElements.contactFields).forEach((field) => {
   if (!field) return;
   field.addEventListener("input", handleFieldFeedback);
   field.addEventListener("blur", handleFieldFeedback);
+  field.addEventListener("invalid", handleInvalidField);
 });
 
 if (scrollTopButton) {
