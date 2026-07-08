@@ -11,6 +11,22 @@
 브라우저에서 index.html을 열거나, 로컬 정적 서버로 실행
 ```
 
+## 기본 폴더 구조
+```txt
+/
+  index.html
+  css/
+    style.css
+  js/
+    main.js
+  images/
+```
+
+- `index.html`: 페이지 구조와 각 자원 연결
+- `css/`: 스타일 파일 보관
+- `js/`: 인터랙션과 기능 로직 보관
+- `images/`: 이미지와 아이콘 같은 정적 자원 보관
+
 ## 작업 흐름
 1. `phase/00_environment_and_repo_setup.md`에 따라 환경을 먼저 정리한다.
 2. 이후 phase 문서를 순서대로 진행한다.
