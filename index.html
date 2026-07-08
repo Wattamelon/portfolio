@@ -62,11 +62,11 @@
             </ul>
           </div>
           <aside class="hero-panel" aria-label="현재 진행 상태">
-            <p class="panel-title">Phase 03</p>
+            <p class="panel-title">Phase 04</p>
             <ul class="panel-list">
-              <li>메뉴와 스크롤 인터랙션 연결</li>
-              <li>테마 전환 상태 저장</li>
-              <li>사용자 행동에 반응하는 UI 준비</li>
+              <li>GitHub API로 저장소 불러오기</li>
+              <li>상태별 Projects UI 구성</li>
+              <li>실제 데이터 기반 카드 렌더링</li>
             </ul>
             <div class="panel-meta">
               <span>학부연구생 6개월</span>
@@ -164,23 +164,13 @@
               <p class="eyebrow">Projects</p>
               <h2 id="projects-title">실제 GitHub 저장소가 들어올 자리</h2>
             </div>
-            <p class="status-chip" data-projects-status>Phase 04에서 실제 데이터 연결 예정</p>
+            <p class="status-chip" data-projects-status aria-live="polite">GitHub repositories ready to load</p>
           </div>
           <div class="project-grid" data-projects-grid>
             <article class="project-card">
-              <h3>Graduation Project</h3>
-              <p>졸업작품에서 다뤘던 문제 해결 경험을 이후 실제 저장소 데이터로 교체해 보여줄 예정입니다.</p>
-              <a href="#projects">GitHub Link</a>
-            </article>
-            <article class="project-card">
-              <h3>Bootcamp Project</h3>
-              <p>코디세이 부트캠프에서 진행한 과제와 학습 결과물을 GitHub API로 연결할 준비를 해둡니다.</p>
-              <a href="#projects">GitHub Link</a>
-            </article>
-            <article class="project-card">
-              <h3>Research / Practice</h3>
-              <p>논문 투고, 연구실 경험, 실습 결과물처럼 설명이 필요한 작업도 이후 카드 구조에 담을 수 있게 준비합니다.</p>
-              <a href="#projects">GitHub Link</a>
+              <h3>Loading repositories...</h3>
+              <p>GitHub API에서 최신 저장소 목록을 가져오는 중입니다.</p>
+              <span class="project-link-placeholder">Please wait</span>
             </article>
           </div>
         </div>
