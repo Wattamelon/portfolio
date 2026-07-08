@@ -1,5 +1,7 @@
 document.documentElement.dataset.app = "portfolio";
 
+const APP_VERSION = "v0.5.2";
+
 window.portfolioElements = {
   menuButton: document.querySelector("[data-menu-button]"),
   nav: document.querySelector("[data-nav]"),
@@ -22,6 +24,7 @@ window.portfolioElements = {
   themeToggle: document.querySelector("[data-theme-toggle]"),
   scrollTopButton: document.querySelector("[data-scroll-top]"),
   header: document.querySelector(".site-header"),
+  buildBadge: document.querySelector(".build-badge"),
 };
 
 const {
@@ -32,6 +35,7 @@ const {
   themeToggle,
   scrollTopButton,
   header,
+  buildBadge,
 } = window.portfolioElements;
 
 const THEME_KEY = "moon-portfolio-theme";
@@ -542,6 +546,10 @@ function updateLanguageButtons() {
 function applyTranslations() {
   document.documentElement.lang = currentLanguage;
   document.title = getTranslation("meta.title") || document.title;
+
+  if (buildBadge) {
+    buildBadge.textContent = `Build ${APP_VERSION}`;
+  }
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const value = getTranslation(element.dataset.i18n);

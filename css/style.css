@@ -604,6 +604,25 @@ p {
     background 180ms ease;
 }
 
+.build-badge {
+  position: fixed;
+  right: 20px;
+  bottom: 84px;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 250, 243, 0.96);
+  color: var(--muted);
+  box-shadow: var(--shadow);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
 .scroll-top-button.is-visible {
   opacity: 1;
   pointer-events: auto;
@@ -689,5 +708,10 @@ p {
 
   .language-switcher {
     order: -1;
+  }
+
+  .build-badge {
+    right: 14px;
+    bottom: 78px;
   }
 }
