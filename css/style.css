@@ -165,7 +165,7 @@ img {
 }
 
 .language-switcher {
-  display: inline-flex;
+  display: none;
   gap: 8px;
   padding: 4px;
   border: 1px solid var(--line);

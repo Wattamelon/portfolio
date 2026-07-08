@@ -1,6 +1,6 @@
 document.documentElement.dataset.app = "portfolio";
 
-const APP_VERSION = "v0.6.0";
+const APP_VERSION = "v0.6.1";
 
 window.portfolioElements = {
   menuButton: document.querySelector("[data-menu-button]"),
@@ -78,21 +78,22 @@ const translations = {
     },
     hero: {
       eyebrow: "Web Core And Front-end",
-      title: "기초를 쌓아 실제로 배포하는 프론트엔드 포트폴리오",
-      text: "한국공학대학교 컴퓨터공학 기반 위에서 웹 기초를 다시 단단하게 쌓고 있습니다. 지금 이 페이지는 Codyssey 4-1 미션을 통해, 구조부터 반응형 레이아웃까지 단계적으로 완성해 가는 개인 포트폴리오 사이트입니다.",
+      title: "문성온 | Front-end Portfolio",
+      text: "프론트엔드와 웹 기본기에 집중하며, 실제 경험을 바탕으로 꾸준히 성장하고 있습니다.",
       primaryAction: "View Projects",
       secondaryAction: "Contact",
       highlightsLabel: "핵심 요약",
       highlights: {
         degree: "컴퓨터공학부 소프트웨어공학과 학사",
         certificates: "SQLD 보유 / OPIC AL",
-        bootcamp: "코디세이 부트캠프 진행 중",
+        bootcamp: "호주 워킹홀리데이 11개월",
       },
-      panelLabel: "현재 진행 상태",
+      panelLabel: "프로필 요약",
+      panelTitle: "Profile",
       phaseItems: {
-        validation: "접근성과 키보드 사용성 점검",
-        feedback: "README와 배포 정보 정리",
-        realtime: "최종 UI와 인터랙션 마감",
+        validation: "프론트엔드와 웹 기초 학습",
+        feedback: "실무형 프로젝트와 포트폴리오 정리",
+        realtime: "꾸준한 기록과 성장 중심",
       },
       meta: {
         research: "학부연구생 6개월",
@@ -104,8 +105,7 @@ const translations = {
       photoAlt: "문성온 프로필 사진",
       badges: { driver: "1종 보통", jlpt: "JLPT N3 준비" },
       eyebrow: "About",
-      title: "기초를 다시 정확하게 다지며 성장 중인 개발자",
-      text: "한국공학대학교 컴퓨터공학부 소프트웨어공학과를 졸업했고, 졸업작품 프로젝트와 학부연구생 경험을 거치며 소프트웨어를 끝까지 만들어보는 과정을 경험했습니다. 지금은 코디세이 부트캠프를 통해 HTML, CSS, JavaScript 기본기를 다시 정리하면서 실제로 배포 가능한 프론트엔드 포트폴리오를 만들고 있습니다.",
+      title: "짧고 분명하게 정리한 프로필",
       info: {
         education: "학력: 한국공학대학교 컴퓨터공학부 소프트웨어공학과 학사, GPA 3.78 / 4.5",
         experience: "경험: 프로발 현장실습 인턴 2개월, 학부연구생 6개월",
@@ -140,7 +140,7 @@ const translations = {
     },
     projects: {
       eyebrow: "Projects",
-      title: "실제 GitHub 저장소가 들어올 자리",
+      title: "Selected Projects",
       loadingTitle: "Loading repositories...",
       loadingBody: "GitHub API에서 최신 저장소 목록을 가져오는 중입니다.",
       loadingWait: "Please wait",
@@ -162,8 +162,8 @@ const translations = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "연락과 협업을 위한 기본 창구",
-      text: "이 문의 영역은 이름, 이메일, 메시지를 입력할 수 있고, 잘못 입력했을 때는 바로 어떤 부분을 고쳐야 하는지 안내합니다. 정상 입력 시에는 제출 성공 메시지까지 확인할 수 있도록 구성했습니다.",
+      title: "Let's Connect",
+      text: "협업, 포지션, 프로젝트에 대한 연락을 남겨주세요.",
       form: {
         nameLabel: "Name",
         namePlaceholder: "Your name",
@@ -181,7 +181,7 @@ const translations = {
         messageRequired: "메시지를 입력해주세요.",
         messageShort: "메시지는 10자 이상 입력해주세요.",
         submitError: "입력 내용을 확인한 뒤 다시 제출해주세요.",
-        submitSuccess: "메시지가 정상적으로 준비되었습니다. 실제 전송 기능은 다음 단계에서 연결할 수 있습니다.",
+        submitSuccess: "메시지가 정상적으로 입력되었습니다.",
       },
     },
     footer: {
@@ -216,21 +216,22 @@ const translations = {
     },
     hero: {
       eyebrow: "Web Core And Front-end",
-      title: "A front-end portfolio built on strong fundamentals and real deployment",
-      text: "I am rebuilding my web foundations on top of a computer engineering background from Tech University of Korea. This page is my personal portfolio site, created through the Codyssey 4-1 mission and improved step by step from structure to responsive layout.",
+      title: "Moon Seong-on | Front-end Portfolio",
+      text: "Focused on front-end fundamentals and steady growth built on real experience.",
       primaryAction: "View Projects",
       secondaryAction: "Contact",
       highlightsLabel: "Key highlights",
       highlights: {
         degree: "B.S. in Software Engineering",
         certificates: "SQLD / OPIC AL",
-        bootcamp: "Currently in Codyssey Bootcamp",
+        bootcamp: "11 months working holiday in Australia",
       },
-      panelLabel: "Current progress",
+      panelLabel: "Profile summary",
+      panelTitle: "Profile",
       phaseItems: {
-        validation: "Checked accessibility and keyboard usability",
-        feedback: "Organized README and deployment information",
-        realtime: "Polished the final UI and interactions",
+        validation: "Studying front-end and web fundamentals",
+        feedback: "Building practical projects and portfolio work",
+        realtime: "Focused on consistency and growth",
       },
       meta: {
         research: "6 months as undergraduate researcher",
@@ -242,8 +243,7 @@ const translations = {
       photoAlt: "Profile photo of Moon Seong-on",
       badges: { driver: "Driver's License", jlpt: "Preparing for JLPT N3" },
       eyebrow: "About",
-      title: "A developer growing by rebuilding the basics with precision",
-      text: "I graduated in Software Engineering from Tech University of Korea, and I experienced end-to-end software development through a capstone project and undergraduate research. Now I am revisiting HTML, CSS, and JavaScript fundamentals through the Codyssey bootcamp while building a deployable front-end portfolio.",
+      title: "A clear and compact profile",
       info: {
         education: "Education: B.S. in Software Engineering, Tech University of Korea, GPA 3.78 / 4.5",
         experience: "Experience: 2-month internship at Proval, 6 months as an undergraduate researcher",
@@ -278,7 +278,7 @@ const translations = {
     },
     projects: {
       eyebrow: "Projects",
-      title: "Where live GitHub repositories appear",
+      title: "Selected Projects",
       loadingTitle: "Loading repositories...",
       loadingBody: "Fetching the latest repositories from the GitHub API.",
       loadingWait: "Please wait",
@@ -300,8 +300,8 @@ const translations = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "A simple contact point for communication and collaboration",
-      text: "This contact area lets visitors enter a name, email, and message. If something is entered incorrectly, the page immediately explains what needs to be fixed, and it also shows a success message when the input is valid.",
+      title: "Let's Connect",
+      text: "Feel free to reach out about collaboration, roles, or projects.",
       form: {
         nameLabel: "Name",
         namePlaceholder: "Your name",
@@ -319,7 +319,7 @@ const translations = {
         messageRequired: "Please enter your message.",
         messageShort: "Your message must be at least 10 characters long.",
         submitError: "Please review the form and try again.",
-        submitSuccess: "Your message is ready. Real delivery can be connected in a later phase.",
+        submitSuccess: "Your message has been entered successfully.",
       },
     },
     footer: {
@@ -354,21 +354,22 @@ const translations = {
     },
     hero: {
       eyebrow: "Web Core And Front-end",
-      title: "基礎を積み上げて実際に公開するフロントエンドポートフォリオ",
-      text: "韓国工学大学のコンピュータ工学の基盤の上で、Webの基礎をもう一度しっかり固めています。このページは Codyssey 4-1 ミッションを通して、構造からレスポンシブレイアウトまで段階的に完成させていく個人ポートフォリオサイトです。",
+      title: "ムン・ソンオン | Front-end Portfolio",
+      text: "フロントエンドの基礎を軸に、実際の経験を土台として着実に成長しています。",
       primaryAction: "View Projects",
       secondaryAction: "Contact",
       highlightsLabel: "主なポイント",
       highlights: {
         degree: "ソフトウェア工学専攻 学士",
         certificates: "SQLD 保有 / OPIC AL",
-        bootcamp: "Codyssey ブートキャンプ進行中",
+        bootcamp: "オーストラリア ワーキングホリデー 11か月",
       },
-      panelLabel: "現在の進捗",
+      panelLabel: "プロフィール概要",
+      panelTitle: "Profile",
       phaseItems: {
-        validation: "アクセシビリティとキーボード操作を点検",
-        feedback: "README とデプロイ情報を整理",
-        realtime: "最終 UI とインタラクションを仕上げ",
+        validation: "フロントエンドと Web 基礎を学習",
+        feedback: "実務型プロジェクトとポートフォリオを整理",
+        realtime: "継続と成長を重視",
       },
       meta: {
         research: "学部研究生 6か月",
@@ -380,8 +381,7 @@ const translations = {
       photoAlt: "ムン・ソンオンのプロフィール写真",
       badges: { driver: "普通免許", jlpt: "JLPT N3 準備中" },
       eyebrow: "About",
-      title: "基礎を正確に積み直しながら成長している開発者",
-      text: "韓国工学大学のソフトウェア工学科を卒業し、卒業制作プロジェクトと学部研究生の経験を通して、ソフトウェアを最後まで作り上げる過程を経験しました。現在は Codyssey ブートキャンプを通して HTML、CSS、JavaScript の基礎を整理しながら、実際に公開できるフロントエンドポートフォリオを作っています。",
+      title: "短く明確に整理したプロフィール",
       info: {
         education: "学歴: 韓国工学大学 ソフトウェア工学科 学士、GPA 3.78 / 4.5",
         experience: "経験: Proval 現場実習インターン 2か月、学部研究生 6か月",
@@ -416,7 +416,7 @@ const translations = {
     },
     projects: {
       eyebrow: "Projects",
-      title: "実際の GitHub リポジトリが表示される場所",
+      title: "Selected Projects",
       loadingTitle: "Loading repositories...",
       loadingBody: "GitHub API から最新のリポジトリ一覧を取得しています。",
       loadingWait: "Please wait",
@@ -438,8 +438,8 @@ const translations = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "連絡と協業のための基本窓口",
-      text: "このお問い合わせ欄では名前、メールアドレス、メッセージを入力できます。入力に問題がある場合は、どこを直せばよいかをすぐに案内し、正常な入力時には成功メッセージも表示します。",
+      title: "Let's Connect",
+      text: "協業、ポジション、プロジェクトに関する連絡を歓迎します。",
       form: {
         nameLabel: "Name",
         namePlaceholder: "Your name",
@@ -457,7 +457,7 @@ const translations = {
         messageRequired: "メッセージを入力してください。",
         messageShort: "メッセージは10文字以上で入力してください。",
         submitError: "入力内容を確認してからもう一度送信してください。",
-        submitSuccess: "メッセージの入力は正常に完了しました。実際の送信機能は次の段階で接続できます。",
+        submitSuccess: "メッセージが正常に入力されました。",
       },
     },
     footer: {
@@ -469,7 +469,7 @@ const translations = {
   },
 };
 
-let currentLanguage = "ko";
+let currentLanguage = "en";
 
 function getTranslation(key, language = currentLanguage) {
   return key
@@ -593,8 +593,8 @@ function applyTranslations() {
 }
 
 function initLanguage() {
-  const savedLanguage = localStorage.getItem(LANGUAGE_KEY);
-  currentLanguage = translations[savedLanguage] ? savedLanguage : "ko";
+  currentLanguage = "en";
+  localStorage.setItem(LANGUAGE_KEY, "en");
   applyTranslations();
 }
 
