@@ -93,6 +93,7 @@ img {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .brand {
@@ -104,6 +105,7 @@ img {
 
 .menu-button,
 .theme-button,
+.language-button,
 .button-link,
 .submit-button {
   display: inline-flex;
@@ -132,6 +134,30 @@ img {
   cursor: pointer;
 }
 
+.language-switcher {
+  display: inline-flex;
+  gap: 8px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 250, 243, 0.92);
+}
+
+.language-button {
+  min-width: 48px;
+  min-height: 36px;
+  padding: 0 12px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+}
+
+.language-button.is-active {
+  background: var(--accent);
+  color: #fff7f0;
+  border-color: transparent;
+}
+
 .site-nav {
   display: flex;
   gap: 18px;
@@ -157,6 +183,7 @@ img {
 .button-link:hover,
 .submit-button:hover,
 .theme-button:hover,
+.language-button:hover,
 .menu-button:hover,
 .project-card:hover,
 .skill-list li:hover,
@@ -506,6 +533,38 @@ p {
   border-color: rgba(187, 92, 44, 0.5);
 }
 
+.field input.is-invalid,
+.field textarea.is-invalid {
+  border-color: #c74646;
+  background: #fff4f3;
+}
+
+.field input.is-valid,
+.field textarea.is-valid {
+  border-color: #2e8b57;
+}
+
+.field-message {
+  min-height: 20px;
+  margin: 0;
+  color: #c74646;
+  font-size: 0.92rem;
+}
+
+.form-status {
+  min-height: 24px;
+  margin: -4px 0 0;
+  font-weight: 600;
+}
+
+.form-status.is-error {
+  color: #c74646;
+}
+
+.form-status.is-success {
+  color: #2e8b57;
+}
+
 .submit-button {
   width: fit-content;
   background: var(--accent);
@@ -621,5 +680,9 @@ p {
   .header-controls {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .language-switcher {
+    order: -1;
   }
 }
