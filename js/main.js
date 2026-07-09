@@ -1,6 +1,6 @@
 document.documentElement.dataset.app = "portfolio";
 
-const APP_VERSION = "v0.8.0";
+const APP_VERSION = "v0.9.0";
 
 window.portfolioElements = {
   menuButton: document.querySelector("[data-menu-button]"),
@@ -11,6 +11,7 @@ window.portfolioElements = {
   projectFilters: document.querySelector("[data-project-filters]"),
   contactForm: document.querySelector("[data-contact-form]"),
   formStatus: document.querySelector("[data-form-status]"),
+  submitButton: document.querySelector("[data-submit-button]"),
   contactFields: {
     name: document.querySelector("#name"),
     email: document.querySelector("#email"),
@@ -46,6 +47,8 @@ const GITHUB_CONFIG = {
   maxDisplay: 6,
 };
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const FORMSPREE_ENDPOINT_PATTERN =
+  /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/;
 const PROJECT_MESSAGES = {
   loadingTitle: "Loading repositories...",
   loadingBody: "Fetching the latest repositories from the GitHub API.",
@@ -79,7 +82,11 @@ const CONTACT_MESSAGES = {
   messageRequired: "Please enter your message.",
   messageShort: "Your message must be at least 10 characters long.",
   submitError: "Please review the form and try again.",
-  submitSuccess: "Your message has been entered successfully.",
+  submitSuccess: "Your message has been sent successfully.",
+  submitPending: "Sending your message...",
+  submitFailure: "Your message could not be sent. Please try again.",
+  networkFailure: "A network error occurred. Please check your connection and try again.",
+  configurationError: "The contact form is not connected yet. Please contact me through GitHub.",
 };
 const TYPING_INTERVAL = 70;
 
@@ -453,175 +460,4 @@ function setFieldError(fieldName, message = "") {
   }
 
   if (field.value.trim()) {
-    field.classList.add("is-valid");
-  }
-}
-
-function focusFirstInvalidField() {
-  const firstInvalidField = Object.values(window.portfolioElements.contactFields).find(
-    (field) => field?.classList.contains("is-invalid")
-  );
-
-  if (firstInvalidField) {
-    firstInvalidField.focus();
-  }
-}
-
-function validateName() {
-  const field = window.portfolioElements.contactFields.name;
-  if (!field) return true;
-  const value = field.value.trim();
-
-  if (!value) {
-    setFieldError("name", CONTACT_MESSAGES.nameRequired);
-    return false;
-  }
-
-  if (value.length < 2) {
-    setFieldError("name", CONTACT_MESSAGES.nameShort);
-    return false;
-  }
-
-  setFieldError("name");
-  return true;
-}
-
-function validateEmail() {
-  const field = window.portfolioElements.contactFields.email;
-  if (!field) return true;
-  const value = field.value.trim();
-
-  if (!value) {
-    setFieldError("email", CONTACT_MESSAGES.emailRequired);
-    return false;
-  }
-
-  if (!EMAIL_PATTERN.test(value)) {
-    setFieldError("email", CONTACT_MESSAGES.emailInvalid);
-    return false;
-  }
-
-  setFieldError("email");
-  return true;
-}
-
-function validateMessage() {
-  const field = window.portfolioElements.contactFields.message;
-  if (!field) return true;
-  const value = field.value.trim();
-
-  if (!value) {
-    setFieldError("message", CONTACT_MESSAGES.messageRequired);
-    return false;
-  }
-
-  if (value.length < 10) {
-    setFieldError("message", CONTACT_MESSAGES.messageShort);
-    return false;
-  }
-
-  setFieldError("message");
-  return true;
-}
-
-function validateForm() {
-  const nameValid = validateName();
-  const emailValid = validateEmail();
-  const messageValid = validateMessage();
-  return nameValid && emailValid && messageValid;
-}
-
-function handleContactSubmit(event) {
-  event.preventDefault();
-
-  if (!validateForm()) {
-    setFormStatus(CONTACT_MESSAGES.submitError, "error");
-    focusFirstInvalidField();
-    return;
-  }
-
-  setFormStatus(CONTACT_MESSAGES.submitSuccess, "success");
-  window.portfolioElements.contactForm?.reset();
-  ["name", "email", "message"].forEach((fieldName) => setFieldError(fieldName));
-}
-
-function handleFieldFeedback(event) {
-  const fieldName = event.target.name;
-  if (fieldName === "name") validateName();
-  if (fieldName === "email") validateEmail();
-  if (fieldName === "message") validateMessage();
-
-  if (window.portfolioElements.formStatus?.classList.contains("is-error")) {
-    setFormStatus("");
-  }
-}
-
-function handleInvalidField(event) {
-  event.preventDefault();
-  const fieldName = event.target.dataset.validateField;
-  if (fieldName === "name") validateName();
-  if (fieldName === "email") validateEmail();
-  if (fieldName === "message") validateMessage();
-  setFormStatus(CONTACT_MESSAGES.submitError, "error");
-}
-
-if (buildBadge) {
-  buildBadge.textContent = `Build ${APP_VERSION}`;
-}
-
-if (menuButton) {
-  menuButton.addEventListener("click", toggleMenu);
-}
-
-navLinks.forEach((link) => {
-  link.addEventListener("click", (event) => {
-    const hash = link.getAttribute("href");
-    if (!hash) return;
-    event.preventDefault();
-    scrollToTarget(hash);
-    closeMenu();
-  });
-});
-
-document.querySelectorAll('a[href="#top"]').forEach((link) => {
-  link.addEventListener("click", (event) => {
-    event.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    closeMenu();
-  });
-});
-
-if (themeToggle) {
-  themeToggle.addEventListener("click", toggleTheme);
-}
-
-if (window.portfolioElements.contactForm) {
-  window.portfolioElements.contactForm.addEventListener("submit", handleContactSubmit);
-}
-
-Object.values(window.portfolioElements.contactFields).forEach((field) => {
-  if (!field) return;
-  field.addEventListener("input", handleFieldFeedback);
-  field.addEventListener("blur", handleFieldFeedback);
-  field.addEventListener("invalid", handleInvalidField);
-});
-
-if (scrollTopButton) {
-  scrollTopButton.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
-
-window.addEventListener("scroll", handleScrollState, { passive: true });
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 720) {
-    closeMenu();
-  }
-});
-document.addEventListener("click", handleOutsideClick);
-
-initTheme();
-initTypingEffect();
-handleScrollState();
-setProjectsStatus(PROJECT_MESSAGES.statusReady);
-loadProjects();
+    fie
