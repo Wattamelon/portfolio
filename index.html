@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="app-version" content="v0.10.0" />
+    <meta name="app-version" content="v0.10.2" />
     <title>Moon's Portfolio</title>
     <script>
       (() => {
@@ -22,13 +22,13 @@
             : systemTheme;
       })();
     </script>
-    <link rel="stylesheet" href="./css/style.css?v0.10.0" />
-    <script src="./js/config.js?v0.10.0" defer></script>
-    <script src="./js/main.js?v0.10.0" defer></script>
+    <link rel="stylesheet" href="./css/style.css?v0.10.2" />
+    <script src="./js/config.js?v0.10.2" defer></script>
+    <script src="./js/main.js?v0.10.2" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="build-badge" aria-label="Current build version">Build v0.10.0</div>
+    <div class="build-badge" aria-label="Current build version">Build v0.10.2</div>
     <header class="site-header" id="top">
       <div class="container header-inner">
         <a class="brand" href="#top" aria-label="Go to home">Moon's Portfolio</a>
@@ -69,4 +69,262 @@
 
     <main id="main-content" tabindex="-1">
       <section class="hero section" id="hero" aria-labelledby="hero-title">
-      
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Web Core And Front-end</p>
+            <h1
+              id="hero-title"
+              class="typing-title"
+              aria-label="Moon Seongon | Front-end Portfolio"
+              data-typing-text="Moon Seongon | Front-end Portfolio"
+            >
+              <span data-typing-output aria-hidden="true">Moon Seongon | Front-end Portfolio</span>
+            </h1>
+            <p class="hero-text">Focused on front-end fundamentals and steady growth built on real experience.</p>
+            <div class="hero-actions">
+              <a class="button-link" href="#projects">View Projects</a>
+              <a class="button-link secondary" href="#contact">Contact</a>
+            </div>
+            <ul class="hero-highlights" aria-label="Key highlights">
+              <li>B.S. in Software Engineering</li>
+              <li>SQLD / OPIC AL</li>
+              <li>11 months working holiday in Australia</li>
+            </ul>
+          </div>
+          <aside class="hero-panel" aria-label="Profile summary">
+            <p class="panel-title">Profile</p>
+            <ul class="panel-list">
+              <li>Studying front-end and web fundamentals</li>
+              <li>Building practical projects and portfolio work</li>
+              <li>Focused on consistency and growth</li>
+            </ul>
+            <div class="panel-meta">
+              <span>6 months as undergraduate researcher</span>
+              <span>2 months internship</span>
+              <span>11 months working holiday in Australia</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="about section" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <div class="about-card">
+            <h2 id="about-title">About</h2>
+            <div class="about-profile">
+              <div class="profile-photo">
+                <img
+                  src="images/증명사진.JPG"
+                  alt="Profile photo of Moon Seongon"
+                  width="320"
+                  height="320"
+                />
+              </div>
+              <div class="profile-details">
+                <ul class="profile-info-list" aria-label="Profile details">
+                  <li>
+                    <span class="profile-info-label">Name</span>
+                    <span>Moon Seongon</span>
+                  </li>
+                  <li>
+                    <span class="profile-info-label">Education</span>
+                    <span>B.S. in Software Engineering, Tech University of Korea</span>
+                  </li>
+                  <li>
+                    <span class="profile-info-label">GPA</span>
+                    <span>3.78 / 4.5</span>
+                  </li>
+                  <li>
+                    <span class="profile-info-label">Experience</span>
+                    <span>Proval internship 2 months, undergraduate researcher 6 months</span>
+                  </li>
+                  <li>
+                    <span class="profile-info-label">Record</span>
+                    <span>Academic paper submission, graduation project</span>
+                  </li>
+                  <li>
+                    <span class="profile-info-label">Global</span>
+                    <span>OPIC AL, 11 months working holiday in Australia</span>
+                  </li>
+                  <li>
+                    <span class="profile-info-label">Background</span>
+                    <span>Completed military service, driver's license</span>
+                  </li>
+                </ul>
+                <div class="profile-badges" aria-label="Certifications and strengths">
+                  <span>SQLD</span>
+                  <span>OPIC AL</span>
+                  <span>Driver's License</span>
+                  <span>Preparing for JLPT N3</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills section" id="skills" aria-labelledby="skills-title">
+        <div class="container">
+          <p class="eyebrow">Skills</p>
+          <h2 id="skills-title">The strengths and assets I am building into this portfolio</h2>
+          <ul class="skill-list" aria-label="Skill stack list">
+            <li>
+              <strong>Web Basics</strong>
+              <span>Reinforcing HTML, CSS, and JavaScript fundamentals</span>
+            </li>
+            <li>
+              <strong>Responsive UI</strong>
+              <span>Flexbox, Grid, and mobile-first layout thinking</span>
+            </li>
+            <li>
+              <strong>Data Handling</strong>
+              <span>GitHub API, state UI, and DOM rendering</span>
+            </li>
+            <li>
+              <strong>SQLD</strong>
+              <span>Basic understanding of data and querying</span>
+            </li>
+            <li>
+              <strong>Communication</strong>
+              <span>Communication backed by OPIC AL and overseas experience</span>
+            </li>
+            <li>
+              <strong>Consistency</strong>
+              <span>Steady habits built through bootcamp and field experience</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="projects section" id="projects" aria-labelledby="projects-title">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Projects</p>
+              <h2 id="projects-title">Selected Projects</h2>
+            </div>
+            <p class="status-chip" data-projects-status aria-live="polite">GitHub repositories ready to load</p>
+          </div>
+          <div
+            class="project-filters"
+            role="group"
+            aria-label="Filter projects by programming language"
+            data-project-filters
+          >
+            <button
+              class="project-filter is-active"
+              type="button"
+              data-project-filter="All"
+              aria-pressed="true"
+            >
+              All
+            </button>
+          </div>
+          <div class="project-grid" data-projects-grid>
+            <article class="project-card">
+              <h3>Loading repositories...</h3>
+              <p>Fetching the latest repositories from the GitHub API.</p>
+              <span class="project-link-placeholder">Please wait</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact section" id="contact" aria-labelledby="contact-title">
+        <div class="container contact-grid">
+          <div class="section-copy">
+            <p class="eyebrow">Contact</p>
+            <h2 id="contact-title">Let&apos;s Connect</h2>
+            <p>Feel free to reach out about collaboration, roles, or projects.</p>
+          </div>
+          <form class="contact-form" data-contact-form novalidate>
+            <input
+              class="honeypot-field"
+              name="_gotcha"
+              type="text"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+            <input
+              name="_subject"
+              type="hidden"
+              value="New portfolio contact from Moon Seongon's website"
+            />
+            <div class="field">
+              <label for="name">Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Your name"
+                autocomplete="name"
+                required
+                minlength="2"
+                aria-describedby="name-error"
+                data-validate-field="name"
+              />
+              <p class="field-message" id="name-error" data-error-for="name" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+                aria-describedby="email-error"
+                data-validate-field="email"
+              />
+              <p class="field-message" id="email-error" data-error-for="email" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                placeholder="Write your message here"
+                required
+                minlength="10"
+                aria-describedby="message-error"
+                data-validate-field="message"
+              ></textarea>
+              <p
+                class="field-message"
+                id="message-error"
+                data-error-for="message"
+                aria-live="polite"
+              ></p>
+            </div>
+            <p class="form-status" data-form-status aria-live="polite"></p>
+            <button class="submit-button" type="submit" data-submit-button>
+              Send Message
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Moon's Portfolio</p>
+        <div class="footer-links">
+          <a href="https://github.com/Wattamelon" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="#top">Back to Top</a>
+        </div>
+      </div>
+    </footer>
+
+    <button
+      class="scroll-top-button"
+      type="button"
+      aria-label="Back to top"
+      data-scroll-top
+    >
+      Top
+    </button>
+  </body>
+</html>
