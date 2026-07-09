@@ -3,15 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="app-version" content="v0.9.1" />
+    <meta name="app-version" content="v0.10.0" />
     <title>Moon's Portfolio</title>
-    <link rel="stylesheet" href="./css/style.css?v0.9.1" />
-    <script src="./js/config.js?v0.9.1" defer></script>
-    <script src="./js/main.js?v0.9.1" defer></script>
+    <script>
+      (() => {
+        let savedTheme = "";
+        try {
+          savedTheme = localStorage.getItem("moon-portfolio-theme") || "";
+        } catch {
+          savedTheme = "";
+        }
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+        document.documentElement.dataset.theme =
+          savedTheme === "dark" || savedTheme === "light"
+            ? savedTheme
+            : systemTheme;
+      })();
+    </script>
+    <link rel="stylesheet" href="./css/style.css?v0.10.0" />
+    <script src="./js/config.js?v0.10.0" defer></script>
+    <script src="./js/main.js?v0.10.0" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="build-badge" aria-label="Current build version">Build v0.9.1</div>
+    <div class="build-badge" aria-label="Current build version">Build v0.10.0</div>
     <header class="site-header" id="top">
       <div class="container header-inner">
         <a class="brand" href="#top" aria-label="Go to home">Moon's Portfolio</a>

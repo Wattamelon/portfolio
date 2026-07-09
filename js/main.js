@@ -1,6 +1,6 @@
 document.documentElement.dataset.app = "portfolio";
 
-const APP_VERSION = "v0.9.1";
+const APP_VERSION = "v0.10.0";
 
 window.portfolioElements = {
   menuButton: document.querySelector("[data-menu-button]"),
@@ -41,6 +41,7 @@ const {
 } = window.portfolioElements;
 
 const THEME_KEY = "moon-portfolio-theme";
+const SYSTEM_THEME_QUERY = window.matchMedia("(prefers-color-scheme: dark)");
 const GITHUB_CONFIG = {
   username: "Wattamelon",
   perPage: 100,
@@ -157,20 +158,41 @@ function applyTheme(theme) {
     return;
   }
 
-  themeToggle.textContent = "Theme";
+  themeToggle.textContent = "Dark";
   themeToggle.setAttribute("aria-label", "Switch to dark mode");
 }
 
+function getSavedTheme() {
+  try {
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    return savedTheme === "dark" || savedTheme === "light" ? savedTheme : "";
+  } catch {
+    return "";
+  }
+}
+
+function getSystemTheme() {
+  return SYSTEM_THEME_QUERY.matches ? "dark" : "light";
+}
+
 function initTheme() {
-  const savedTheme = localStorage.getItem(THEME_KEY);
-  applyTheme(savedTheme === "dark" ? "dark" : "light");
+  applyTheme(getSavedTheme() || getSystemTheme());
 }
 
 function toggleTheme() {
   const nextTheme =
     document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-  localStorage.setItem(THEME_KEY, nextTheme);
+  try {
+    localStorage.setItem(THEME_KEY, nextTheme);
+  } catch {
+    // The theme still works for this page when browser storage is unavailable.
+  }
   applyTheme(nextTheme);
+}
+
+function handleSystemThemeChange() {
+  if (getSavedTheme()) return;
+  applyTheme(getSystemTheme());
 }
 
 function scrollToTarget(hash) {
@@ -656,6 +678,8 @@ document.querySelectorAll('a[href="#top"]').forEach((link) => {
 if (themeToggle) {
   themeToggle.addEventListener("click", toggleTheme);
 }
+
+SYSTEM_THEME_QUERY.addEventListener("change", handleSystemThemeChange);
 
 if (window.portfolioElements.contactForm) {
   window.portfolioElements.contactForm.addEventListener("submit", handleContactSubmit);

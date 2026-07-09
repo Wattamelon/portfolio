@@ -25,6 +25,21 @@
   --shadow: 0 22px 50px rgba(0, 0, 0, 0.28);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg: #1f1a17;
+    --card: rgba(43, 35, 30, 0.92);
+    --text: #f6ede2;
+    --accent: #f0a06f;
+    --accent-strong: #ffd0af;
+    --line: rgba(255, 216, 180, 0.16);
+    --muted: #d6c1af;
+    --panel: #302720;
+    --shadow: 0 22px 50px rgba(0, 0, 0, 0.28);
+  }
+}
+
 * {
   box-sizing: border-box;
 }
