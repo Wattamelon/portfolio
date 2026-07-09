@@ -1,6 +1,6 @@
 document.documentElement.dataset.app = "portfolio";
 
-const APP_VERSION = "v0.6.3";
+const APP_VERSION = "v0.7.0";
 
 window.portfolioElements = {
   menuButton: document.querySelector("[data-menu-button]"),
@@ -8,6 +8,7 @@ window.portfolioElements = {
   navLinks: Array.from(document.querySelectorAll('[data-nav] a[href^="#"]')),
   projectsGrid: document.querySelector("[data-projects-grid]"),
   projectsStatus: document.querySelector("[data-projects-status]"),
+  projectFilters: document.querySelector("[data-project-filters]"),
   contactForm: document.querySelector("[data-contact-form]"),
   formStatus: document.querySelector("[data-form-status]"),
   contactFields: {
@@ -58,10 +59,16 @@ const PROJECT_MESSAGES = {
   statusLoading: "Loading repositories...",
   statusEmpty: "No repositories found",
   statusLoaded: "Loaded {count} repositories",
+  statusFiltered: "Showing {count} {language} repositories",
+  filterEmptyTitle: "No {language} projects found",
+  filterEmptyBody: "Try another language or select All to see every project.",
   statusError: "Failed to load repositories",
   apiError: "GitHub API request failed ({status})",
   unknownError: "An unknown error occurred.",
 };
+const ALL_PROJECTS_FILTER = "All";
+let projectRepos = [];
+let activeProjectFilter = ALL_PROJECTS_FILTER;
 const CONTACT_MESSAGES = {
   nameRequired: "Please enter your name.",
   nameShort: "Your name must be at least 2 characters long.",
@@ -238,8 +245,94 @@ function createErrorCard(message, onRetry) {
 function selectRepos(repos) {
   return repos
     .filter((repo) => !repo.fork)
-    .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
-    .slice(0, GITHUB_CONFIG.maxDisplay);
+    .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
+}
+
+function filterReposByLanguage(repos, language) {
+  if (language === ALL_PROJECTS_FILTER) {
+    return repos;
+  }
+
+  return repos.filter((repo) => repo.language === language);
+}
+
+function renderProjects() {
+  const grid = window.portfolioElements.projectsGrid;
+  if (!grid) return;
+
+  const filteredRepos = filterReposByLanguage(
+    projectRepos,
+    activeProjectFilter
+  ).slice(0, GITHUB_CONFIG.maxDisplay);
+
+  if (filteredRepos.length === 0) {
+    grid.replaceChildren(
+      createStateCard(
+        interpolate(PROJECT_MESSAGES.filterEmptyTitle, {
+          language: activeProjectFilter,
+        }),
+        PROJECT_MESSAGES.filterEmptyBody,
+        "empty"
+      )
+    );
+    setProjectsStatus(PROJECT_MESSAGES.statusEmpty);
+    return;
+  }
+
+  grid.replaceChildren(...filteredRepos.map(createProjectCard));
+
+  const statusMessage =
+    activeProjectFilter === ALL_PROJECTS_FILTER
+      ? PROJECT_MESSAGES.statusLoaded
+      : PROJECT_MESSAGES.statusFiltered;
+  setProjectsStatus(
+    interpolate(statusMessage, {
+      count: filteredRepos.length,
+      language: activeProjectFilter,
+    })
+  );
+}
+
+function setActiveProjectFilter(language) {
+  activeProjectFilter = language;
+
+  window.portfolioElements.projectFilters
+    ?.querySelectorAll("[data-project-filter]")
+    .forEach((button) => {
+      const isActive = button.dataset.projectFilter === language;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
+
+  renderProjects();
+}
+
+function createProjectFilterButton(language) {
+  const button = document.createElement("button");
+  button.className = "project-filter";
+  button.type = "button";
+  button.dataset.projectFilter = language;
+  button.textContent = language;
+  button.setAttribute("aria-pressed", "false");
+  button.addEventListener("click", () => setActiveProjectFilter(language));
+  return button;
+}
+
+function renderProjectFilters(repos) {
+  const filters = window.portfolioElements.projectFilters;
+  if (!filters) return;
+
+  const languages = [
+    ...new Set(repos.map((repo) => repo.language).filter(Boolean)),
+  ].sort((a, b) => a.localeCompare(b));
+
+  const allButton = createProjectFilterButton(ALL_PROJECTS_FILTER);
+  allButton.classList.add("is-active");
+  allButton.setAttribute("aria-pressed", "true");
+  filters.replaceChildren(
+    allButton,
+    ...languages.map(createProjectFilterButton)
+  );
 }
 
 async function loadProjects() {
@@ -281,12 +374,10 @@ async function loadProjects() {
       return;
     }
 
-    grid.replaceChildren(...selectedRepos.map(createProjectCard));
-    setProjectsStatus(
-      interpolate(PROJECT_MESSAGES.statusLoaded, {
-        count: selectedRepos.length,
-      })
-    );
+    projectRepos = selectedRepos;
+    activeProjectFilter = ALL_PROJECTS_FILTER;
+    renderProjectFilters(projectRepos);
+    renderProjects();
   } catch (error) {
     grid.replaceChildren(
       createErrorCard(
