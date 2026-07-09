@@ -239,6 +239,31 @@ h1 {
   max-width: 12ch;
 }
 
+.typing-title {
+  min-height: 3.15em;
+}
+
+.typing-title [data-typing-output]::after {
+  content: "";
+  display: inline-block;
+  width: 0.08em;
+  height: 0.9em;
+  margin-left: 0.08em;
+  background: var(--accent);
+  animation: typing-cursor-blink 0.8s steps(1) infinite;
+  vertical-align: -0.05em;
+}
+
+.typing-title.is-typing-complete [data-typing-output]::after {
+  animation-iteration-count: 3;
+}
+
+@keyframes typing-cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 h2,
 h3 {
   margin-top: 0;
@@ -718,6 +743,10 @@ p {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .typing-title [data-typing-output]::after {
+    display: none;
   }
 }
 

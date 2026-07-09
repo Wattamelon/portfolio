@@ -1,6 +1,6 @@
 document.documentElement.dataset.app = "portfolio";
 
-const APP_VERSION = "v0.7.0";
+const APP_VERSION = "v0.8.0";
 
 window.portfolioElements = {
   menuButton: document.querySelector("[data-menu-button]"),
@@ -25,6 +25,8 @@ window.portfolioElements = {
   scrollTopButton: document.querySelector("[data-scroll-top]"),
   header: document.querySelector(".site-header"),
   buildBadge: document.querySelector(".build-badge"),
+  typingTitle: document.querySelector("[data-typing-text]"),
+  typingOutput: document.querySelector("[data-typing-output]"),
 };
 
 const {
@@ -79,6 +81,43 @@ const CONTACT_MESSAGES = {
   submitError: "Please review the form and try again.",
   submitSuccess: "Your message has been entered successfully.",
 };
+const TYPING_INTERVAL = 70;
+
+function initTypingEffect() {
+  const { typingTitle, typingOutput } = window.portfolioElements;
+  if (!typingTitle || !typingOutput) return;
+
+  const text = typingTitle.dataset.typingText || "";
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (!text || prefersReducedMotion) {
+    typingOutput.textContent = text;
+    typingTitle.classList.add("is-typing-complete");
+    return;
+  }
+
+  const characters = Array.from(text);
+  let characterIndex = 0;
+  typingOutput.textContent = "";
+  typingTitle.classList.add("is-typing");
+
+  const typeNextCharacter = () => {
+    typingOutput.textContent += characters[characterIndex];
+    characterIndex += 1;
+
+    if (characterIndex < characters.length) {
+      window.setTimeout(typeNextCharacter, TYPING_INTERVAL);
+      return;
+    }
+
+    typingTitle.classList.remove("is-typing");
+    typingTitle.classList.add("is-typing-complete");
+  };
+
+  window.setTimeout(typeNextCharacter, 300);
+}
 
 function interpolate(message, values = {}) {
   return Object.entries(values).reduce(
@@ -582,6 +621,7 @@ window.addEventListener("resize", () => {
 document.addEventListener("click", handleOutsideClick);
 
 initTheme();
+initTypingEffect();
 handleScrollState();
 setProjectsStatus(PROJECT_MESSAGES.statusReady);
 loadProjects();
