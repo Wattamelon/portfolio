@@ -1,6 +1,6 @@
 document.documentElement.dataset.app = "portfolio";
 
-const APP_VERSION = "v0.9.0";
+const APP_VERSION = "v0.9.1";
 
 window.portfolioElements = {
   menuButton: document.querySelector("[data-menu-button]"),
@@ -460,4 +460,230 @@ function setFieldError(fieldName, message = "") {
   }
 
   if (field.value.trim()) {
-    fie
+    field.classList.add("is-valid");
+  }
+}
+
+function focusFirstInvalidField() {
+  const firstInvalidField = Object.values(window.portfolioElements.contactFields).find(
+    (field) => field?.classList.contains("is-invalid")
+  );
+
+  if (firstInvalidField) {
+    firstInvalidField.focus();
+  }
+}
+
+function validateName() {
+  const field = window.portfolioElements.contactFields.name;
+  if (!field) return true;
+  const value = field.value.trim();
+
+  if (!value) {
+    setFieldError("name", CONTACT_MESSAGES.nameRequired);
+    return false;
+  }
+
+  if (value.length < 2) {
+    setFieldError("name", CONTACT_MESSAGES.nameShort);
+    return false;
+  }
+
+  setFieldError("name");
+  return true;
+}
+
+function validateEmail() {
+  const field = window.portfolioElements.contactFields.email;
+  if (!field) return true;
+  const value = field.value.trim();
+
+  if (!value) {
+    setFieldError("email", CONTACT_MESSAGES.emailRequired);
+    return false;
+  }
+
+  if (!EMAIL_PATTERN.test(value)) {
+    setFieldError("email", CONTACT_MESSAGES.emailInvalid);
+    return false;
+  }
+
+  setFieldError("email");
+  return true;
+}
+
+function validateMessage() {
+  const field = window.portfolioElements.contactFields.message;
+  if (!field) return true;
+  const value = field.value.trim();
+
+  if (!value) {
+    setFieldError("message", CONTACT_MESSAGES.messageRequired);
+    return false;
+  }
+
+  if (value.length < 10) {
+    setFieldError("message", CONTACT_MESSAGES.messageShort);
+    return false;
+  }
+
+  setFieldError("message");
+  return true;
+}
+
+function validateForm() {
+  const nameValid = validateName();
+  const emailValid = validateEmail();
+  const messageValid = validateMessage();
+  return nameValid && emailValid && messageValid;
+}
+
+function getFormspreeEndpoint() {
+  const endpoint = window.PORTFOLIO_CONFIG?.formspreeEndpoint?.trim() || "";
+  return FORMSPREE_ENDPOINT_PATTERN.test(endpoint) ? endpoint : "";
+}
+
+function setFormSubmitting(isSubmitting) {
+  const { contactForm, submitButton } = window.portfolioElements;
+  if (contactForm) {
+    contactForm.setAttribute("aria-busy", String(isSubmitting));
+  }
+  if (!submitButton) return;
+
+  submitButton.disabled = isSubmitting;
+  submitButton.textContent = isSubmitting ? "Sending..." : "Send Message";
+}
+
+async function getSubmissionError(response) {
+  try {
+    const result = await response.json();
+    const message = result.errors?.[0]?.message || result.error;
+    return typeof message === "string" ? message : CONTACT_MESSAGES.submitFailure;
+  } catch {
+    return CONTACT_MESSAGES.submitFailure;
+  }
+}
+
+async function handleContactSubmit(event) {
+  event.preventDefault();
+
+  if (!validateForm()) {
+    setFormStatus(CONTACT_MESSAGES.submitError, "error");
+    focusFirstInvalidField();
+    return;
+  }
+
+  const endpoint = getFormspreeEndpoint();
+  const form = window.portfolioElements.contactForm;
+  if (!endpoint || !form) {
+    setFormStatus(CONTACT_MESSAGES.configurationError, "error");
+    return;
+  }
+
+  setFormSubmitting(true);
+  setFormStatus(CONTACT_MESSAGES.submitPending);
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      body: new FormData(form),
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      setFormStatus(await getSubmissionError(response), "error");
+      return;
+    }
+
+    setFormStatus(CONTACT_MESSAGES.submitSuccess, "success");
+    form.reset();
+    ["name", "email", "message"].forEach((fieldName) => setFieldError(fieldName));
+  } catch {
+    setFormStatus(CONTACT_MESSAGES.networkFailure, "error");
+  } finally {
+    setFormSubmitting(false);
+  }
+}
+
+function handleFieldFeedback(event) {
+  const fieldName = event.target.name;
+  if (fieldName === "name") validateName();
+  if (fieldName === "email") validateEmail();
+  if (fieldName === "message") validateMessage();
+
+  if (window.portfolioElements.formStatus?.classList.contains("is-error")) {
+    setFormStatus("");
+  }
+}
+
+function handleInvalidField(event) {
+  event.preventDefault();
+  const fieldName = event.target.dataset.validateField;
+  if (fieldName === "name") validateName();
+  if (fieldName === "email") validateEmail();
+  if (fieldName === "message") validateMessage();
+  setFormStatus(CONTACT_MESSAGES.submitError, "error");
+}
+
+if (buildBadge) {
+  buildBadge.textContent = `Build ${APP_VERSION}`;
+}
+
+if (menuButton) {
+  menuButton.addEventListener("click", toggleMenu);
+}
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const hash = link.getAttribute("href");
+    if (!hash) return;
+    event.preventDefault();
+    scrollToTarget(hash);
+    closeMenu();
+  });
+});
+
+document.querySelectorAll('a[href="#top"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    closeMenu();
+  });
+});
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", toggleTheme);
+}
+
+if (window.portfolioElements.contactForm) {
+  window.portfolioElements.contactForm.addEventListener("submit", handleContactSubmit);
+}
+
+Object.values(window.portfolioElements.contactFields).forEach((field) => {
+  if (!field) return;
+  field.addEventListener("input", handleFieldFeedback);
+  field.addEventListener("blur", handleFieldFeedback);
+  field.addEventListener("invalid", handleInvalidField);
+});
+
+if (scrollTopButton) {
+  scrollTopButton.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+window.addEventListener("scroll", handleScrollState, { passive: true });
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 720) {
+    closeMenu();
+  }
+});
+document.addEventListener("click", handleOutsideClick);
+
+initTheme();
+initTypingEffect();
+handleScrollState();
+setProjectsStatus(PROJECT_MESSAGES.statusReady);
+loadProjects();

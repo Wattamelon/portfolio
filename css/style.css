@@ -757,4 +757,108 @@ p {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transit
+    transition-duration: 0.01ms !important;
+  }
+
+  .typing-title [data-typing-output]::after {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-grid,
+  .about-grid,
+  .contact-grid,
+  .project-grid,
+  .skill-list,
+  .about-profile {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy,
+  .hero-panel,
+  .section-copy,
+  .project-card,
+  .contact-form {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 14px;
+    left: 14px;
+    display: none;
+    flex-direction: column;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .menu-button {
+    display: inline-flex;
+  }
+
+  .header-inner,
+  .footer-inner,
+  .section-heading,
+  .hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .container {
+    width: min(var(--container), calc(100% - 28px));
+  }
+
+  h1 {
+    max-width: none;
+  }
+
+  .header-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .about-card {
+    padding: 28px 22px;
+  }
+
+  .about-profile {
+    gap: 28px;
+  }
+
+  .profile-info-list li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .build-badge {
+    right: 14px;
+    bottom: 78px;
+  }
+
+  .project-filters {
+    flex-wrap: nowrap;
+    margin-right: -14px;
+    padding-right: 14px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .project-filter {
+    flex: 0 0 auto;
+  }
+}
