@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="app-version" content="v0.10.2" />
+    <meta name="app-version" content="v0.10.3" />
     <title>Moon's Portfolio</title>
     <script>
       (() => {
@@ -23,13 +23,13 @@
             : systemTheme;
       })();
     </script>
-    <link rel="stylesheet" href="./css/style.css?v0.10.2" />
-    <script src="./js/config.js?v0.10.2" defer></script>
-    <script src="./js/main.js?v0.10.2" defer></script>
+    <link rel="stylesheet" href="./css/style.css?v0.10.3" />
+    <script src="./js/config.js?v0.10.3" defer></script>
+    <script src="./js/main.js?v0.10.3" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="build-badge" aria-label="Current build version">Build v0.10.2</div>
+    <div class="build-badge" aria-label="Current build version">Build v0.10.3</div>
     <button
       class="theme-button"
       type="button"
@@ -72,7 +72,7 @@
       <section class="hero section" id="hero" aria-labelledby="hero-title">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">console.log("hello portfolio")</p>
+            <p class="eyebrow">console.log("building globally, communicating clearly")</p>
             <h1
               id="hero-title"
               class="typing-title"
@@ -131,14 +131,14 @@
                   </li>
                   <li>
                     <span class="profile-info-label">Background</span>
-                    <span>Completed military service, driver's license</span>
+                    <span>Completed military service</span>
                   </li>
                 </ul>
                 <div class="profile-badges" aria-label="Certifications and strengths">
                   <span>SQLD</span>
                   <span>OPIC AL</span>
+                  <span>JLPT N3</span>
                   <span>Driver's License</span>
-                  <span>Preparing for JLPT N3</span>
                 </div>
               </div>
             </div>
@@ -186,7 +186,27 @@
               <p class="eyebrow">Projects</p>
               <h2 id="projects-title">Selected Projects</h2>
             </div>
-            <p class="status-chip" data-projects-status aria-live="polite">GitHub repositories ready to load</p>
+            <div class="project-heading-actions">
+              <p class="status-chip" data-projects-status aria-live="polite">GitHub repositories ready to load</p>
+              <button class="refresh-projects-button" type="button" data-refresh-projects>
+                Refresh
+              </button>
+            </div>
+          </div>
+          <div
+            class="project-filters"
+            role="group"
+            aria-label="Filter projects by programming language"
+            data-project-filters
+          >
+            <button
+              class="project-filter is-active"
+              type="button"
+              data-project-filter="All"
+              aria-pressed="true"
+            >
+              All
+            </button>
           </div>
           <div class="project-grid" data-projects-grid>
             <article class="project-card">

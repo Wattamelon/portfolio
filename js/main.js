@@ -1,6 +1,6 @@
 document.documentElement.dataset.app = "portfolio";
 
-const APP_VERSION = "v0.10.2";
+const APP_VERSION = "v0.10.3";
 
 window.portfolioElements = {
   menuButton: document.querySelector("[data-menu-button]"),
@@ -9,6 +9,7 @@ window.portfolioElements = {
   projectsGrid: document.querySelector("[data-projects-grid]"),
   projectsStatus: document.querySelector("[data-projects-status]"),
   projectFilters: document.querySelector("[data-project-filters]"),
+  refreshProjectsButton: document.querySelector("[data-refresh-projects]"),
   contactForm: document.querySelector("[data-contact-form]"),
   formStatus: document.querySelector("[data-form-status]"),
   submitButton: document.querySelector("[data-submit-button]"),
@@ -252,6 +253,13 @@ function setProjectsStatus(text, state = "idle") {
   if (state === "error") status.classList.add("is-error");
 }
 
+function setProjectsRefreshing(isRefreshing) {
+  const button = window.portfolioElements.refreshProjectsButton;
+  if (!button) return;
+  button.disabled = isRefreshing;
+  button.textContent = isRefreshing ? "Refreshing..." : "Refresh";
+}
+
 function formatDate(dateString) {
   const date = new Date(dateString);
   return new Intl.DateTimeFormat("en-US", {
@@ -426,6 +434,7 @@ async function loadProjects() {
   const grid = window.portfolioElements.projectsGrid;
   if (!grid) return;
 
+  setProjectsRefreshing(true);
   grid.replaceChildren(
     createStateCard(
       PROJECT_MESSAGES.loadingTitle,
@@ -473,6 +482,8 @@ async function loadProjects() {
       )
     );
     setProjectsStatus(PROJECT_MESSAGES.statusError, "error");
+  } finally {
+    setProjectsRefreshing(false);
   }
 }
 
@@ -696,6 +707,13 @@ document.querySelectorAll('a[href="#top"]').forEach((link) => {
 
 if (themeToggle) {
   themeToggle.addEventListener("click", toggleTheme);
+}
+
+if (window.portfolioElements.refreshProjectsButton) {
+  window.portfolioElements.refreshProjectsButton.addEventListener(
+    "click",
+    loadProjects
+  );
 }
 
 SYSTEM_THEME_QUERY.addEventListener("change", handleSystemThemeChange);
