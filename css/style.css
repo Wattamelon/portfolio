@@ -902,7 +902,6 @@ p {
     display: inline-flex;
   }
 
-  .header-inner,
   .footer-inner,
   .section-heading,
   .hero-actions {
@@ -911,7 +910,18 @@ p {
   }
 
   .header-inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand {
+    grid-column: 1;
+  }
+
+  .header-controls {
+    grid-column: 2;
   }
 
   .hero-actions {
@@ -927,8 +937,8 @@ p {
   }
 
   .header-controls {
-    width: 100%;
-    justify-content: space-between;
+    width: auto;
+    justify-content: flex-end;
   }
 
   .about-card {
