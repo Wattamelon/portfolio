@@ -89,7 +89,10 @@ const CONTACT_MESSAGES = {
   networkFailure: "A network error occurred. Please check your connection and try again.",
   configurationError: "The contact form is not connected yet. Please contact me through GitHub.",
 };
-const TYPING_INTERVAL = 70;
+const TYPING_TYPE_INTERVAL = 70;
+const TYPING_DELETE_INTERVAL = 32;
+const TYPING_HOLD_DELAY = 1000;
+const TYPING_RESTART_DELAY = 300;
 
 function initTypingEffect() {
   const { typingTitle, typingOutput } = window.portfolioElements;
@@ -108,23 +111,39 @@ function initTypingEffect() {
 
   const characters = Array.from(text);
   let characterIndex = 0;
+  let isDeleting = false;
   typingOutput.textContent = "";
   typingTitle.classList.add("is-typing");
 
-  const typeNextCharacter = () => {
-    typingOutput.textContent += characters[characterIndex];
-    characterIndex += 1;
+  const renderFrame = () => {
+    typingOutput.textContent = characters.slice(0, characterIndex).join("");
 
-    if (characterIndex < characters.length) {
-      window.setTimeout(typeNextCharacter, TYPING_INTERVAL);
+    if (!isDeleting && characterIndex < characters.length) {
+      characterIndex += 1;
+      window.setTimeout(renderFrame, TYPING_TYPE_INTERVAL);
       return;
     }
 
-    typingTitle.classList.remove("is-typing");
-    typingTitle.classList.add("is-typing-complete");
+    if (!isDeleting && characterIndex === characters.length) {
+      isDeleting = true;
+      typingTitle.classList.add("is-typing-complete");
+      window.setTimeout(renderFrame, TYPING_HOLD_DELAY);
+      return;
+    }
+
+    if (isDeleting && characterIndex > 0) {
+      characterIndex -= 1;
+      typingTitle.classList.remove("is-typing-complete");
+      window.setTimeout(renderFrame, TYPING_DELETE_INTERVAL);
+      return;
+    }
+
+    isDeleting = false;
+    typingTitle.classList.remove("is-typing-complete");
+    window.setTimeout(renderFrame, TYPING_RESTART_DELAY);
   };
 
-  window.setTimeout(typeNextCharacter, 300);
+  window.setTimeout(renderFrame, TYPING_RESTART_DELAY);
 }
 
 function interpolate(message, values = {}) {
@@ -153,12 +172,12 @@ function applyTheme(theme) {
   if (!themeToggle) return;
 
   if (theme === "dark") {
-    themeToggle.textContent = "Light";
+    themeToggle.textContent = "☀️";
     themeToggle.setAttribute("aria-label", "Switch to light mode");
     return;
   }
 
-  themeToggle.textContent = "Dark";
+  themeToggle.textContent = "🌙";
   themeToggle.setAttribute("aria-label", "Switch to dark mode");
 }
 

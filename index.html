@@ -13,6 +13,7 @@
         } catch {
           savedTheme = "";
         }
+
         const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
           ? "dark"
           : "light";
@@ -29,18 +30,18 @@
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="build-badge" aria-label="Current build version">Build v0.10.2</div>
+    <button
+      class="theme-button"
+      type="button"
+      aria-label="Switch to dark mode"
+      data-theme-toggle
+    >
+      🌙
+    </button>
     <header class="site-header" id="top">
       <div class="container header-inner">
         <a class="brand" href="#top" aria-label="Go to home">Moon's Portfolio</a>
         <div class="header-controls">
-          <button
-            class="theme-button"
-            type="button"
-            aria-label="Switch to dark mode"
-            data-theme-toggle
-          >
-            Theme
-          </button>
           <button
             class="menu-button"
             type="button"
@@ -71,39 +72,21 @@
       <section class="hero section" id="hero" aria-labelledby="hero-title">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">Web Core And Front-end</p>
+            <p class="eyebrow">console.log("hello portfolio")</p>
             <h1
               id="hero-title"
               class="typing-title"
-              aria-label="Moon Seongon | Front-end Portfolio"
-              data-typing-text="Moon Seongon | Front-end Portfolio"
+              aria-label="Hello World, I am Moon. I build front-end experiences."
+              data-typing-text="Hello World, I am Moon."
             >
-              <span data-typing-output aria-hidden="true">Moon Seongon | Front-end Portfolio</span>
+              <span data-typing-output aria-hidden="true">Hello World, I am Moon.</span>
             </h1>
-            <p class="hero-text">Focused on front-end fundamentals and steady growth built on real experience.</p>
+            <p class="hero-text">Turning front-end fundamentals into clean, responsive, and user-friendly web experiences.</p>
             <div class="hero-actions">
               <a class="button-link" href="#projects">View Projects</a>
               <a class="button-link secondary" href="#contact">Contact</a>
             </div>
-            <ul class="hero-highlights" aria-label="Key highlights">
-              <li>B.S. in Software Engineering</li>
-              <li>SQLD / OPIC AL</li>
-              <li>11 months working holiday in Australia</li>
-            </ul>
           </div>
-          <aside class="hero-panel" aria-label="Profile summary">
-            <p class="panel-title">Profile</p>
-            <ul class="panel-list">
-              <li>Studying front-end and web fundamentals</li>
-              <li>Building practical projects and portfolio work</li>
-              <li>Focused on consistency and growth</li>
-            </ul>
-            <div class="panel-meta">
-              <span>6 months as undergraduate researcher</span>
-              <span>2 months internship</span>
-              <span>11 months working holiday in Australia</span>
-            </div>
-          </aside>
         </div>
       </section>
 
@@ -205,21 +188,6 @@
             </div>
             <p class="status-chip" data-projects-status aria-live="polite">GitHub repositories ready to load</p>
           </div>
-          <div
-            class="project-filters"
-            role="group"
-            aria-label="Filter projects by programming language"
-            data-project-filters
-          >
-            <button
-              class="project-filter is-active"
-              type="button"
-              data-project-filter="All"
-              aria-pressed="true"
-            >
-              All
-            </button>
-          </div>
           <div class="project-grid" data-projects-grid>
             <article class="project-card">
               <h3>Loading repositories...</h3>
@@ -238,19 +206,6 @@
             <p>Feel free to reach out about collaboration, roles, or projects.</p>
           </div>
           <form class="contact-form" data-contact-form novalidate>
-            <input
-              class="honeypot-field"
-              name="_gotcha"
-              type="text"
-              tabindex="-1"
-              autocomplete="off"
-              aria-hidden="true"
-            />
-            <input
-              name="_subject"
-              type="hidden"
-              value="New portfolio contact from Moon Seongon's website"
-            />
             <div class="field">
               <label for="name">Name</label>
               <input
@@ -300,9 +255,7 @@
               ></p>
             </div>
             <p class="form-status" data-form-status aria-live="polite"></p>
-            <button class="submit-button" type="submit" data-submit-button>
-              Send Message
-            </button>
+            <button class="submit-button" type="submit">Send Message</button>
           </form>
         </div>
       </section>
@@ -313,7 +266,6 @@
         <p>© 2026 Moon's Portfolio</p>
         <div class="footer-links">
           <a href="https://github.com/Wattamelon" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="#top">Back to Top</a>
         </div>
       </div>
     </footer>
