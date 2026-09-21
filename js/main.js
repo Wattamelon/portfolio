@@ -1,6 +1,6 @@
 document.documentElement.dataset.app = "portfolio";
 
-const APP_VERSION = "v0.10.5";
+const APP_VERSION = "v0.11.0";
 
 window.portfolioElements = {
   menuButton: document.querySelector("[data-menu-button]"),

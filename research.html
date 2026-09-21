@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="app-version" content="v0.11.0" />
+    <title>Research | Moon's Portfolio</title>
+    <script>
+      (() => {
+        let savedTheme = "";
+        try { savedTheme = localStorage.getItem("moon-portfolio-theme") || ""; } catch { /* Storage unavailable. */ }
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = savedTheme === "dark" || savedTheme === "light" ? savedTheme : systemTheme;
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css?v0.11.0" />
+    <script src="./js/config.js?v0.11.0" defer></script>
+    <script src="./js/main.js?v0.11.0" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="build-badge" aria-label="Current build version">Build v0.11.0</div>
+    <button class="theme-button" type="button" aria-label="Switch to dark mode" data-theme-toggle>🌙</button>
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Go to portfolio home">Moon's Portfolio</a>
+        <div class="header-controls"><button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav" data-menu-button><i class="fa-solid fa-bars" aria-hidden="true"></i></button></div>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation" data-nav>
+          <a href="index.html#hero">Home</a><a href="index.html#about">About</a><a href="index.html#skills">Skills</a><a href="index.html#projects">Projects</a><a href="research.html" aria-current="page">Research</a><a href="index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1">
+      <section class="research-hero" aria-labelledby="research-title">
+        <div class="container research-hero__grid">
+          <div>
+            <p class="eyebrow">Research / Conference Paper</p>
+            <h1 class="research-title" id="research-title">Vehicle Type Specific Traffic Volume Analysis Using STGCN with LSTM-Based Residual Correction</h1>
+            <p class="research-lead">A lane-level traffic prediction study that adds LSTM residual correction to STGCN, helping capture temporal prediction errors that remain after the baseline model.</p>
+            <div class="research-tags" aria-label="Research topics"><span class="research-tag">Traffic Prediction</span><span class="research-tag">STGCN</span><span class="research-tag">LSTM</span><span class="research-tag">Graph Neural Network</span></div>
+          </div>
+          <aside class="research-summary-card" aria-label="Paper details">
+            <span class="research-chip">IEEE INDIN 2026</span>
+            <strong>Conference Paper</strong>
+            <p><strong>First author</strong><br />Seongon Moon / 문선곤</p>
+            <p>Publication details and paper link: To be updated.</p>
+          </aside>
+        </div>
+      </section>
+      <section class="section" aria-labelledby="overview-title"><div class="container">
+        <div class="research-section-heading"><p class="eyebrow">Overview</p><h2 id="overview-title">Predicting traffic conditions by vehicle type</h2><p>The study uses real-world road traffic data to forecast queue length and average speed for passenger cars, buses, trucks, and motorcycles. STGCN learns road-network and time-based patterns, while the added LSTM module learns residual patterns for a final correction.</p></div>
+        <div class="research-overview"><article class="research-panel"><h3>Research focus</h3><p>Rather than replacing STGCN, the proposed model corrects what the baseline misses: STGCN creates a base prediction, and an LSTM models the remaining temporal error before producing the final prediction.</p></article><article class="research-panel"><h3>Input &amp; output</h3><p>Past 12 five-minute intervals (one hour) across 9 input channels are used to predict the next five-minute condition across 8 output channels: queue length and average speed for each vehicle type.</p></article></div>
+      </div></section>
+      <section class="section" aria-labelledby="dataset-title"><div class="container">
+        <div class="research-section-heading"><p class="eyebrow">Dataset</p><h2 id="dataset-title">Real-world, lane-level traffic data</h2><p>Traffic was collected across nine intersections in Bucheon City, Gyeonggi-do, South Korea, from August to October 2022. Each lane is represented as a graph node, with physical lane-to-lane connections used as the adjacency matrix.</p></div>
+        <div class="data-stats"><div class="data-stat"><strong>9</strong><span>Intersections</span></div><div class="data-stat"><strong>1,370</strong><span>Lane nodes</span></div><div class="data-stat"><strong>30 days</strong><span>Traffic data</span></div><div class="data-stat"><strong>5 min</strong><span>Sampling interval</span></div></div>
+      </div></section>
+      <section class="section" aria-labelledby="model-title"><div class="container"><div class="research-section-heading"><p class="eyebrow">Model</p><h2 id="model-title">Residual correction on top of STGCN</h2><p>The proposed model has approximately 1.8M parameters, compared with approximately 1.5M for the STGCN baseline.</p></div><div class="flow-diagram" aria-label="Traffic data, STGCN, base prediction, LSTM residual correction, final prediction"><div class="flow-step">Traffic Data</div><div class="flow-step">STGCN</div><div class="flow-step">Base Prediction</div><div class="flow-step">LSTM Residual Correction</div><div class="flow-step">Final Prediction</div></div></div></section>
+      <section class="section" aria-labelledby="results-title"><div class="container"><div class="research-section-heading"><p class="eyebrow">Results</p><h2 id="results-title">Lower prediction error than the baseline</h2><p>Across the overall results, the residual-correction model reduced both MAE and RMSE. Bus and motorcycle traffic had relatively lower volumes, and larger relative improvements were observed for these vehicle types.</p></div><div class="research-results-grid"><article class="metric-card"><h3>Mean Absolute Error</h3><div class="metric-comparison"><div><span>STGCN</span><strong>0.2848</strong></div><span class="metric-arrow" aria-hidden="true">→</span><div><span>Proposed</span><strong>0.1549</strong></div></div><span class="metric-highlight">45.6% lower MAE</span></article><article class="metric-card"><h3>Root Mean Squared Error</h3><div class="metric-comparison"><div><span>STGCN</span><strong>0.8573</strong></div><span class="metric-arrow" aria-hidden="true">→</span><div><span>Proposed</span><strong>0.4316</strong></div></div><span class="metric-highlight">49.7% lower RMSE</span></article></div></div></section>
+      <section class="section" aria-labelledby="contributions-title"><div class="container"><div class="research-section-heading"><p class="eyebrow">Contribution</p><h2 id="contributions-title">Research experience in practice</h2></div><div class="research-contributions"><article class="contribution-card"><h3>Data &amp; modeling</h3><p>Worked with vehicle-type-specific, graph-structured road-network data and implemented spatio-temporal prediction at the lane level.</p></article><article class="contribution-card"><h3>Evaluation &amp; analysis</h3><p>Compared the baseline and proposed models using MAE and RMSE, then analyzed performance changes across traffic conditions and vehicle types.</p></article></div><div class="research-meta"><span class="research-chip">Passenger Car</span><span class="research-chip">Bus</span><span class="research-chip">Truck</span><span class="research-chip">Motorcycle</span></div></div></section>
+    </main>
+    <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Moon's Portfolio</p><div class="footer-links"><a href="index.html">Portfolio Home</a><a href="https://github.com/Wattamelon" target="_blank" rel="noreferrer">GitHub</a></div></div></footer>
+    <button class="scroll-top-button" type="button" aria-label="Back to top" data-scroll-top>Top</button>
+  </body>
+</html>
