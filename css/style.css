@@ -523,6 +523,28 @@ p {
   margin-bottom: 12px;
 }
 
+.project-card--pinned {
+  position: relative;
+}
+
+.project-card__pin {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  display: inline-grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(49, 130, 246, 0.12);
+  color: var(--accent);
+  font-size: 0.78rem;
+}
+
+.project-card--pinned h3 {
+  padding-left: 36px;
+}
+
 .project-card a {
   font-weight: 700;
   color: var(--accent-strong);

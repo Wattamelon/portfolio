@@ -48,6 +48,10 @@ const GITHUB_CONFIG = {
   perPage: 100,
   maxDisplay: 6,
 };
+const PINNED_PROJECT_NAMES = [
+  "TrafficVolumeAnalysis",
+  "YoutubeTrendAnalysis",
+];
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const FORMSPREE_ENDPOINT_PATTERN =
   /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/;
@@ -273,6 +277,16 @@ function createProjectCard(repo) {
   const article = document.createElement("article");
   article.className = "project-card";
 
+  if (PINNED_PROJECT_NAMES.includes(repo.name)) {
+    article.classList.add("project-card--pinned");
+    const pin = document.createElement("span");
+    pin.className = "project-card__pin";
+    pin.setAttribute("role", "img");
+    pin.setAttribute("aria-label", "Pinned project");
+    pin.innerHTML = '<i class="fa-solid fa-thumbtack" aria-hidden="true"></i>';
+    article.append(pin);
+  }
+
   const title = document.createElement("h3");
   title.textContent = repo.name;
 
@@ -338,9 +352,15 @@ function createErrorCard(message, onRetry) {
 }
 
 function selectRepos(repos) {
-  return repos
-    .filter((repo) => !repo.fork)
+  const publicRepos = repos.filter((repo) => !repo.fork);
+  const pinnedRepos = PINNED_PROJECT_NAMES
+    .map((name) => publicRepos.find((repo) => repo.name === name))
+    .filter(Boolean);
+  const remainingRepos = publicRepos
+    .filter((repo) => !PINNED_PROJECT_NAMES.includes(repo.name))
     .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
+
+  return [...pinnedRepos, ...remainingRepos];
 }
 
 function filterReposByLanguage(repos, language) {
