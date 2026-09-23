@@ -536,9 +536,13 @@ p {
   height: 28px;
   place-items: center;
   border-radius: 50%;
-  background: rgba(49, 130, 246, 0.12);
-  color: var(--accent);
+  background: rgba(229, 72, 77, 0.12);
+  color: #e5484d;
   font-size: 0.78rem;
+}
+
+.project-card__pin i {
+  transform: rotate(-28deg);
 }
 
 .project-card--pinned h3 {
